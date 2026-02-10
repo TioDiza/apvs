@@ -7,7 +7,7 @@ export const Hero: React.FC = () => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="/assets/apvs-facade-v2.png" 
+          src="/assets/apvs-building-main.png" 
           alt="Fachada da sede da APVS Brasil com carro adesivado" 
           className="w-full h-full object-cover object-center scale-105 transform transition-transform duration-[20s] hover-scale-100"
         />
