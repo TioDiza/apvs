@@ -49,8 +49,8 @@
 <style>
   @keyframes shine {
     0% { transform: translateX(-150%) skewX(-25deg); }
-    10% { transform: translateX(150%) skewX(-25deg); }
-    100% { transform: translateX(150%) skewX(-25deg); }
+    25% { transform: translateX(250%) skewX(-25deg); }
+    100% { transform: translateX(250%) skewX(-25deg); }
   }
 
   .shine-effect::after {
@@ -61,7 +61,7 @@
     width: 40%;
     height: 100%;
     background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0) 100%);
-    animation: shine 5s infinite 2s;
+    animation: shine 2.5s infinite 1s;
   }
 </style>
 </head>
