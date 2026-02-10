@@ -1,5 +1,6 @@
 import React from 'react';
 import { Reveal } from '@/components/Reveal';
+import heroBg from '@/assets/hero-background-v2.png';
 
 export const HeroSection: React.FC = () => {
   return (
@@ -7,7 +8,7 @@ export const HeroSection: React.FC = () => {
       {/* Background Image with Overlay */}
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/assets/hero-background-v2.png')" }}
+        style={{ backgroundImage: `url(${heroBg})` }}
         aria-label="Fachada da sede da APVS Brasil com carros adesivados"
         role="img"
       >
