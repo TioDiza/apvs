@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ShieldCheck, Facebook, Instagram, Youtube, MapPin, Phone, Mail } from 'lucide-react';
 
 export const Footer: React.FC = () => {
@@ -86,8 +87,8 @@ export const Footer: React.FC = () => {
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
           <p>&copy; {new Date().getFullYear()} APVS Brasil. Todos os direitos reservados.</p>
           <div className="flex space-x-6">
-            <a href="#" className="hover:text-white transition-colors">Termos de Uso</a>
-            <a href="#" className="hover:text-white transition-colors">Política de Privacidade</a>
+            <Link to="/termos-de-uso" className="hover:text-white transition-colors">Termos de Uso</Link>
+            <Link to="/politica-de-privacidade" className="hover:text-white transition-colors">Política de Privacidade</Link>
           </div>
         </div>
       </div>

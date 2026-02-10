@@ -1,32 +1,23 @@
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { Navbar } from '@/components/Navbar';
-import { HeroSection } from '@/components/HeroSection';
-import { HowItWorks } from '@/components/HowItWorks';
-import { Benefits } from '@/components/Benefits';
-import { Quotation } from '@/components/Quotation';
-import { About } from '@/components/About';
-import { Testimonials } from '@/components/Testimonials';
-import { FAQ } from '@/components/FAQ';
-import { FinalCTA } from '@/components/FinalCTA';
 import { Footer } from '@/components/Footer';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
+import { HomePage } from '@/pages/HomePage';
+import { TermsOfUsePage } from '@/pages/TermsOfUsePage';
+import { PrivacyPolicyPage } from '@/pages/PrivacyPolicyPage';
+import ScrollToTop from '@/components/ScrollToTop';
 
 const App: React.FC = () => {
   return (
     <div className="relative w-full min-h-screen overflow-x-hidden selection:bg-apvs-green-500 selection:text-white">
       <Navbar />
-      
-      <main>
-        <HeroSection />
-        <HowItWorks />
-        <Benefits />
-        <Quotation />
-        <About />
-        <Testimonials />
-        <FAQ />
-        <FinalCTA />
-      </main>
-
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/termos-de-uso" element={<TermsOfUsePage />} />
+        <Route path="/politica-de-privacidade" element={<PrivacyPolicyPage />} />
+      </Routes>
       <Footer />
       <WhatsAppButton />
     </div>
