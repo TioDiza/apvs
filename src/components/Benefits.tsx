@@ -37,7 +37,7 @@ const benefits = [
 
 export const Benefits: React.FC = () => {
   return (
-    <section id="beneficios" className="py-24 bg-white">
+    <section id="beneficios" className="py-24">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row gap-12 items-center mb-16">
           <div className="lg:w-1/3">
