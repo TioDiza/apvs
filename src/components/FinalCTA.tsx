@@ -24,7 +24,7 @@ export const FinalCTA: React.FC = () => {
           </p>
           <a 
             href="#cotacao" 
-            className="inline-flex items-center justify-center bg-apvs-green-500 hover:bg-apvs-green-600 text-white px-10 py-5 rounded-xl font-bold text-xl transition-all transform hover:scale-105 shadow-[0_0_30px_rgba(0,176,80,0.4)] hover:shadow-[0_0_40px_rgba(0,176,80,0.6)]"
+            className="relative overflow-hidden inline-flex items-center justify-center bg-apvs-green-500 hover:bg-apvs-green-600 text-white px-10 py-5 rounded-xl font-bold text-xl transition-all transform hover:scale-105 shadow-[0_0_30px_rgba(0,176,80,0.4)] hover:shadow-[0_0_40px_rgba(0,176,80,0.6)] shine-effect"
           >
             Quero proteger meu veículo agora
           </a>

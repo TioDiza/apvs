@@ -60,7 +60,7 @@ export const HowItWorks: React.FC = () => {
         <Reveal className="mt-16 text-center">
           <a 
             href="#cotacao" 
-            className="inline-flex items-center justify-center bg-apvs-blue-900 hover:bg-apvs-blue-800 text-white px-8 py-4 rounded-lg font-bold text-lg transition-all shadow-lg hover:shadow-xl"
+            className="relative overflow-hidden inline-flex items-center justify-center bg-apvs-blue-900 hover:bg-apvs-blue-800 text-white px-8 py-4 rounded-lg font-bold text-lg transition-all shadow-lg hover:shadow-xl shine-effect"
           >
             Simular minha proteção
           </a>

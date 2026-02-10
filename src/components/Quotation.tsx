@@ -87,9 +87,9 @@ export const Quotation: React.FC = () => {
                 <button
                   type="submit"
                   disabled={placa.length < 7 || isSubmitting}
-                  className={`w-full py-4 px-6 rounded-xl text-lg font-bold flex items-center justify-center gap-2 transition-all shadow-lg ${
+                  className={`relative overflow-hidden w-full py-4 px-6 rounded-xl text-lg font-bold flex items-center justify-center gap-2 transition-all shadow-lg ${
                     placa.length >= 7 
-                      ? 'bg-apvs-green-500 hover:bg-apvs-green-600 text-white hover:shadow-xl hover:-translate-y-1' 
+                      ? 'bg-apvs-green-500 hover:bg-apvs-green-600 text-white hover:shadow-xl hover:-translate-y-1 shine-effect' 
                       : 'bg-gray-200 text-gray-400 cursor-not-allowed'
                   }`}
                 >

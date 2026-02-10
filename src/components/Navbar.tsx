@@ -57,7 +57,7 @@ export const Navbar: React.FC = () => {
             </ul>
             <a 
               href="#cotacao" 
-              className="bg-apvs-green-500 hover:bg-apvs-green-600 text-white px-6 py-2.5 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg"
+              className="relative overflow-hidden bg-apvs-green-500 hover:bg-apvs-green-600 text-white px-6 py-2.5 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg shine-effect"
             >
               Cotação Online
             </a>
