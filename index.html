@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>APVS Brasil | Proteção Veicular Completa</title>
+    <meta name="description" content="Proteção Veicular Completa para o Seu Veículo. Segurança, economia e cobertura nacional." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              apvs: {
+                blue: {
+                  900: '#0f224a', // Dark Corporate Blue
+                  800: '#1a3668',
+                  50: '#f0f4f8',
+                },
+                green: {
+                  500: '#00b050', // CTA Green
+                  600: '#008c40',
+                },
+                gray: {
+                  100: '#f3f4f6',
+                  50: '#f9fafb',
+                }
+              }
+            },
+            fontFamily: {
+              sans: ['Inter', 'system-ui', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="font-sans antialiased text-gray-800 bg-white">
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
