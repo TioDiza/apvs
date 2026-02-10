@@ -5,12 +5,12 @@ export const HeroSection: React.FC = () => {
   return (
     <section id="inicio" className="relative min-h-[90vh] flex items-center justify-center pt-20 overflow-hidden">
       {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0">
-        <img 
-          src="/assets/hero-background-v2.png" 
-          alt="Fachada da sede da APVS Brasil com carros adesivados" 
-          className="w-full h-full object-cover object-center"
-        />
+      <div 
+        className="absolute inset-0 z-0 bg-cover bg-center"
+        style={{ backgroundImage: "url('/assets/hero-background-v2.png')" }}
+        aria-label="Fachada da sede da APVS Brasil com carros adesivados"
+        role="img"
+      >
         <div className="absolute inset-0 bg-gradient-to-r from-apvs-blue-900/90 via-apvs-blue-900/80 to-transparent"></div>
       </div>
 
