@@ -2,11 +2,12 @@ import React from 'react';
 import { Users, Award, MapPin } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
 import aboutImage from '@/assets/about-image.png';
+import Counter from './Counter';
 
 const stats = [
-  { icon: Users, value: '500.000+', label: 'Associados Ativos' },
-  { icon: Award, value: '14 Anos', label: 'de Experiência' },
-  { icon: MapPin, value: '2.500+', label: 'Pontos de Atendimento' },
+  { icon: Users, end: 500000, suffix: '+', label: 'Associados Ativos' },
+  { icon: Award, end: 14, suffix: ' Anos', label: 'de Experiência' },
+  { icon: MapPin, end: 2500, suffix: '+', label: 'Pontos de Atendimento' },
 ];
 
 export const About: React.FC = () => {
@@ -61,7 +62,10 @@ export const About: React.FC = () => {
                 {stats.map((stat, index) => (
                   <div key={index} className="flex flex-col items-start">
                     <stat.icon className="w-8 h-8 text-apvs-blue-900 mb-3" />
-                    <span className="text-2xl font-extrabold text-gray-900">{stat.value}</span>
+                    <span className="text-2xl font-extrabold text-gray-900">
+                      <Counter end={stat.end} />
+                      {stat.suffix}
+                    </span>
                     <span className="text-sm text-gray-500 font-medium">{stat.label}</span>
                   </div>
                 ))}
