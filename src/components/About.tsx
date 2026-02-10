@@ -12,7 +12,7 @@ const stats = [
 
 export const About: React.FC = () => {
   return (
-    <section id="sobre" className="py-24 overflow-hidden">
+    <section id="sobre" className="py-24 bg-gray-50 overflow-hidden">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center gap-16">
           
