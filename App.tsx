@@ -1,15 +1,15 @@
 import React from 'react';
-import { Navbar } from '@/src/components/Navbar';
-import { HeroSection } from '@/src/components/HeroSection';
-import { HowItWorks } from '@/src/components/HowItWorks';
-import { Benefits } from '@/src/components/Benefits';
-import { Quotation } from '@/src/components/Quotation';
-import { About } from '@/src/components/About';
-import { Testimonials } from '@/src/components/Testimonials';
-import { FAQ } from '@/src/components/FAQ';
-import { FinalCTA } from '@/src/components/FinalCTA';
-import { Footer } from '@/src/components/Footer';
-import { WhatsAppButton } from '@/src/components/WhatsAppButton';
+import { Navbar } from '@/components/Navbar';
+import { HeroSection } from '@/components/HeroSection';
+import { HowItWorks } from '@/components/HowItWorks';
+import { Benefits } from '@/components/Benefits';
+import { Quotation } from '@/components/Quotation';
+import { About } from '@/components/About';
+import { Testimonials } from '@/components/Testimonials';
+import { FAQ } from '@/components/FAQ';
+import { FinalCTA } from '@/components/FinalCTA';
+import { Footer } from '@/components/Footer';
+import { WhatsAppButton } from '@/components/WhatsAppButton';
 
 const App: React.FC = () => {
   return (

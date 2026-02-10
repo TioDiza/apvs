@@ -1,5 +1,5 @@
 import React from 'react';
-import { Reveal } from '@/src/components/Reveal';
+import { Reveal } from '@/components/Reveal';
 
 export const HeroSection: React.FC = () => {
   return (
