@@ -11,7 +11,7 @@ export const HeroSection: React.FC = () => {
         aria-label="Fachada da sede da APVS Brasil com carros adesivados"
         role="img"
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-apvs-blue-900/90 via-apvs-blue-900/80 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-apvs-blue-900/75 via-apvs-blue-900/60 to-transparent"></div>
       </div>
 
       <div className="container relative z-10 mx-auto px-4 md:px-6 lg:px-8 flex flex-col lg:flex-row items-center">
