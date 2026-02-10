@@ -1,6 +1,7 @@
 import React from 'react';
 import { Users, Award, MapPin } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
+import aboutImage from '@/assets/about-image.png';
 
 const stats = [
   { icon: Users, value: '500.000+', label: 'Associados Ativos' },
@@ -19,11 +20,10 @@ export const About: React.FC = () => {
               {/* Image composition */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-                  alt="Escritório APVS" 
-                  className="w-full h-[500px] object-cover"
+                  src={aboutImage} 
+                  alt="Veículos protegidos pela APVS Brasil, incluindo carro, caminhão, moto e barco" 
+                  className="w-full h-auto object-cover"
                 />
-                <div className="absolute inset-0 bg-apvs-blue-900/10"></div>
               </div>
               
               {/* Floating badge */}
