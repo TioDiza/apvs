@@ -1,13 +1,13 @@
 import React from 'react';
 import { Reveal } from './Reveal';
 
-export const Hero: React.FC = () => {
+export const HeroSection: React.FC = () => {
   return (
     <section id="inicio" className="relative min-h-[90vh] flex items-center justify-center pt-20 overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="/assets/apvs-facade-background.png" 
+          src="/assets/hero-background-v2.png" 
           alt="Fachada da sede da APVS Brasil com carros adesivados" 
           className="w-full h-full object-cover object-center"
         />
@@ -51,17 +51,6 @@ export const Hero: React.FC = () => {
               >
                 Como funciona
               </a>
-            </div>
-          </Reveal>
-          
-          <Reveal animation="fade-in" delay={1000}>
-            <div className="mt-12 flex items-center gap-4 text-sm text-gray-300">
-              <div className="flex -space-x-2">
-                {[1, 2, 3, 4].map((i) => (
-                  <img key={i} className="w-8 h-8 rounded-full border-2 border-apvs-blue-900" src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="User" />
-                ))}
-              </div>
-              <p>Mais de <strong className="text-white">500.000</strong> veículos protegidos.</p>
             </div>
           </Reveal>
         </div>
