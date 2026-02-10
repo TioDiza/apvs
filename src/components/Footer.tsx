@@ -50,33 +50,33 @@ export const Footer: React.FC = () => {
               <li className="flex items-start gap-3">
                 <Phone className="w-5 h-5 text-apvs-green-500 flex-shrink-0 mt-0.5" />
                 <div>
-                  <p className="font-semibold text-white">Assistência 24h</p>
-                  <p className="text-sm">0800 000 0000</p>
+                  <p className="font-semibold text-white">Assistência 24hr</p>
+                  <p className="text-sm">0800 605 4381</p>
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <Phone className="w-5 h-5 text-apvs-green-500 flex-shrink-0 mt-0.5" />
                 <div>
-                  <p className="font-semibold text-white">Comercial</p>
-                  <p className="text-sm">(31) 4003-0000</p>
+                  <p className="font-semibold text-white">Central APVS Brasil</p>
+                  <p className="text-sm">(21) 98364-9788</p>
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="w-5 h-5 text-apvs-green-500 flex-shrink-0 mt-0.5" />
-                <p className="text-sm">contato@apvs.com.br</p>
+                <p className="text-sm">regional.arsenal@apvsbrasil.com</p>
               </li>
             </ul>
           </div>
 
           {/* Address */}
           <div>
-            <h4 className="text-white font-bold mb-6 uppercase text-sm tracking-wider">Sede Administrativa</h4>
+            <h4 className="text-white font-bold mb-6 uppercase text-sm tracking-wider">Endereço</h4>
             <div className="flex items-start gap-3">
               <MapPin className="w-5 h-5 text-apvs-green-500 flex-shrink-0 mt-0.5" />
               <p className="text-sm leading-relaxed">
-                Av. Nossa Senhora do Carmo, 1234<br />
-                Sion, Belo Horizonte - MG<br />
-                CEP: 30330-000
+                Av. Dr. Eugênio Borges, 853 - Loja 218<br />
+                Arsenal, São Gonçalo - RJ<br />
+                CEP: 24755-451
               </p>
             </div>
           </div>
