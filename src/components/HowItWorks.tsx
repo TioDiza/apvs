@@ -44,13 +44,13 @@ export const HowItWorks: React.FC = () => {
           {steps.map((step, index) => (
             <Reveal key={index} delay={index * 200} className="relative z-10">
               <div className="flex flex-col items-center text-center group">
-                <div className="w-24 h-24 rounded-full bg-white dark:bg-gray-800 shadow-lg flex items-center justify-center mb-6 border-4 border-gray-50 dark:border-gray-700 group-hover:border-apvs-green-500 transition-colors duration-300 relative">
+                <div className="w-24 h-24 rounded-full bg-white dark:bg-gray-800 shadow-lg flex items-center justify-center mb-6 border-4 border-gray-50 dark:border-gray-700 group-hover:border-apvs-green-500 transition-colors duration-300 relative glowing-border-circle">
                   <div className="absolute -top-2 -right-2 w-8 h-8 bg-apvs-blue-900 text-white rounded-full flex items-center justify-center font-bold text-sm shadow-md">
                     {index + 1}
                   </div>
-                  <step.icon className="w-10 h-10 text-apvs-blue-900 group-hover:text-apvs-green-500 transition-colors duration-300" />
+                  <step.icon className="w-10 h-10 text-apvs-blue-900 dark:text-blue-300 group-hover:text-apvs-green-500 transition-colors duration-300" />
                 </div>
-                <h4 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">{step.title}</h4>
+                <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{step.title}</h4>
                 <p className="text-gray-600 dark:text-gray-300">{step.description}</p>
               </div>
             </Reveal>

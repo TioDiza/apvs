@@ -94,6 +94,22 @@
     filter: blur(15px);
     animation: rotate-glow 4s linear infinite;
   }
+
+  .dark .glowing-border-circle::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: -3px;
+    border-radius: 9999px; /* for rounded-full */
+    background: conic-gradient(
+      from 0deg at 50% 50%,
+      transparent 40%, 
+      #3b82f6, /* Azul mais claro para o brilho */
+      transparent 60%
+    );
+    filter: blur(15px);
+    animation: rotate-glow 4s linear infinite;
+  }
 </style>
 </head>
   <body class="font-sans antialiased text-gray-800 bg-white dark:bg-gray-900 dark:text-gray-200 transition-colors duration-300">
