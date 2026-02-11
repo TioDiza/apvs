@@ -3,7 +3,7 @@ import { getBrands, getModels, getYears, getVehicleInfo, Brand, Model, Year, Veh
 import { calculateMonthlyFee, VehicleCategory } from '@/services/pricingData';
 import { Reveal } from '@/components/Reveal';
 import { Car, Bike, Truck, Shield, CheckCircle2, Loader2, AlertCircle, RefreshCw } from 'lucide-react';
-import { supabase } from '@/integrations/supabase/client';
+import { supabase } from '../integrations/supabase/client';
 
 type ApiVehicleType = 'cars' | 'motorcycles' | 'trucks';
 
