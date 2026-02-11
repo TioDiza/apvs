@@ -31,7 +31,7 @@ export const About: React.FC = () => {
               </div>
               
               {/* Floating badge */}
-              <div className="absolute -bottom-4 right-4 md:-bottom-8 md:-right-8 bg-white dark:bg-gray-800 p-4 md:p-6 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 animate-bounce-slow">
+              <div className="absolute -bottom-8 -right-8 bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-xl hidden md:block border border-gray-100 dark:border-gray-700 animate-bounce-slow">
                 <div className="flex items-center gap-4">
                   <div className="bg-blue-100 p-3 rounded-full">
                     <Award className="w-8 h-8 text-apvs-accent-600" />
