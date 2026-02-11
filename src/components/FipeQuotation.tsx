@@ -6,6 +6,19 @@ import { Car, Bike, Truck, Shield, CheckCircle2, MapPin, Loader2, AlertCircle, R
 
 type ApiVehicleType = 'cars' | 'motorcycles' | 'trucks';
 
+const formatPhone = (value: string) => {
+  if (!value) return "";
+  const digits = value.replace(/\D/g, '');
+  
+  if (digits.length === 0) return "";
+
+  if (digits.length <= 2) return `(${digits}`;
+  
+  if (digits.length <= 7) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+  
+  return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7, 11)}`;
+};
+
 const VehicleTypeSelector: React.FC<{ selected: ApiVehicleType; onSelect: (type: ApiVehicleType) => void }> = ({ selected, onSelect }) => {
   const types: { id: ApiVehicleType; label: string; icon: React.ElementType }[] = [
     { id: 'cars', label: 'Carro', icon: Car },
@@ -284,7 +297,15 @@ export const FipeQuotation: React.FC = () => {
             <p className="text-gray-500 mb-6">Preencha seus dados para ver o valor da sua proteção.</p>
             <form onSubmit={(e) => { e.preventDefault(); handleProceedToYearSelection(); }} className="w-full flex flex-col gap-4">
               <input type="text" placeholder="Seu nome completo" value={name} onChange={e => setName(e.target.value)} required className="block w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-apvs-blue-900" />
-              <input type="tel" placeholder="Seu melhor telefone (WhatsApp)" value={phone} onChange={e => setPhone(e.target.value)} required className="block w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-apvs-blue-900" />
+              <input 
+                type="tel" 
+                placeholder="Seu melhor telefone (WhatsApp)" 
+                value={phone} 
+                onChange={e => setPhone(formatPhone(e.target.value))} 
+                maxLength={15}
+                required 
+                className="block w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-apvs-blue-900" 
+              />
               <p className="text-sm text-gray-500 mt-2">Veja a cotação agora após preencher os dados.</p>
               <button type="submit" disabled={!name || !phone} className="w-full py-3 px-6 rounded-xl text-lg font-bold bg-apvs-green-500 hover:bg-apvs-green-600 text-white transition-all shadow-lg hover:-translate-y-1 disabled:bg-gray-400 disabled:cursor-not-allowed">
                 Ver Cotação
