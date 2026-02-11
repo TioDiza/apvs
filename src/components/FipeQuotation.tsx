@@ -89,15 +89,20 @@ export const FipeQuotation: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const benefits = [
-    "Assistência 24h Completa",
     "Roubo e Furto",
     "Colisão e Perda Total",
     "Incêndio",
     "Fenômenos da Natureza",
+    "Proteção a Terceiros (R$ 50 mil)",
+    "Guincho",
+    "Socorro Elétrico/Mecânico",
+    "Troca De Pneu",
+    "Chaveiro",
+    "Pane Seca",
+    "Hospedagem",
     "Assistência Residencial",
     "Assistência Funeral",
     "Assistência PET",
-    "Proteção a Terceiros (R$ 50 mil)",
   ];
 
   const parseFipeValue = (fipeString: string): number => {
@@ -362,7 +367,7 @@ export const FipeQuotation: React.FC = () => {
             </div>
 
             <div className="text-left w-full space-y-3 mb-6">
-              <h5 className="font-bold text-lg text-gray-800 mb-3">Benefícios do Plano Prata:</h5>
+              <h5 className="font-bold text-lg text-gray-800 mb-3">Benefícios Inclusos:</h5>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 text-gray-700">
                 {benefits.map((benefit, index) => (
                   <li key={index} className="flex items-center gap-2">
