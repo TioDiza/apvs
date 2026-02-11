@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Loader2 } from 'lucide-react';
 import '@/styles/login.css';
 import logo from '@/assets/logo-apvs-gold.png';
+import FallingParticles from '@/components/FallingParticles';
 
 export const LoginPage: React.FC = () => {
   const navigate = useNavigate();
@@ -34,9 +35,10 @@ export const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="bg-gray-100 dark:bg-gray-900 min-h-screen flex items-center justify-center p-4 relative">
-      <img src={logo} alt="APVS Brasil Logo" className="absolute top-8 left-8 w-48" />
-      <div className="card">
+    <div className="bg-gray-100 dark:bg-gray-900 min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
+      <FallingParticles />
+      <img src={logo} alt="APVS Brasil Logo" className="absolute top-8 left-8 w-48 z-10" />
+      <div className="card z-10">
         <input
           checked={isPasswordVisible}
           onChange={() => setIsPasswordVisible(!isPasswordVisible)}

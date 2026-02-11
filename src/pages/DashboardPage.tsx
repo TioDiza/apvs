@@ -3,6 +3,7 @@ import { supabase } from '../integrations/supabase/client';
 import { useNavigate } from 'react-router-dom';
 import { Loader2, Trash2, LogOut, CheckCircle, RefreshCw } from 'lucide-react';
 import logo from '@/assets/logo-apvs-gold.png';
+import FallingParticles from '@/components/FallingParticles';
 
 interface Quotation {
   id: string;
@@ -85,8 +86,9 @@ export const DashboardPage: React.FC = () => {
   };
 
   return (
-    <div className="bg-gray-100 dark:bg-apvs-blue-900 min-h-screen py-16 md:py-24">
-      <div className="container mx-auto px-4 md:px-6 lg:px-8">
+    <div className="bg-gray-100 dark:bg-apvs-blue-900 min-h-screen py-16 md:py-24 relative overflow-hidden">
+      <FallingParticles />
+      <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
         <div className="flex justify-center mb-8">
           <img src={logo} alt="APVS Brasil Logo" className="w-48" />
         </div>
