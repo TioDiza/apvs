@@ -61,18 +61,26 @@ export const DashboardPage: React.FC = () => {
   };
 
   const handleToggleContacted = async (id: string, currentStatus: boolean) => {
-    const { data, error } = await supabase
-      .from('quotations')
-      .update({ contacted: !currentStatus })
-      .eq('id', id)
-      .select()
-      .single();
+    const newStatus = !currentStatus;
+    const originalQuotations = quotations;
 
+    // Atualização otimista da UI
+    const updatedQuotations = quotations.map(q =>
+      q.id === id ? { ...q, contacted: newStatus } : q
+    );
+    setQuotations(updatedQuotations);
+
+    // Tenta atualizar no banco de dados
+    const { error } = await supabase
+      .from('quotations')
+      .update({ contacted: newStatus })
+      .eq('id', id);
+
+    // Se der erro, reverte a alteração na UI e avisa o usuário
     if (error) {
       alert('Erro ao atualizar o status do contato.');
       console.error(error);
-    } else if (data) {
-      setQuotations(quotations.map(q => (q.id === id ? data as Quotation : q)));
+      setQuotations(originalQuotations);
     }
   };
 
