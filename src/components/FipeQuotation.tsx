@@ -181,43 +181,48 @@ export const FipeQuotation: React.FC = () => {
   }, [selectedModel]);
 
   useEffect(() => {
-    if (!selectedYear) return;
-    const fetchVehicleInfo = async () => {
-      setIsLoading(true);
-      setError(null);
-      try {
-        const data = await getVehicleInfo(apiVehicleType, selectedBrand, selectedModel, selectedYear);
-        setVehicleInfo(data);
-
-        const fipeValue = parseFipeValue(data.price);
-        setShowTrackerBenefit(fipeValue >= 31000);
-
-        let category: VehicleCategory = 'motorcycle';
-        if (apiVehicleType === 'cars') category = carCategory;
-        if (apiVehicleType === 'trucks') category = 'heavy';
-
-        const fee = calculateMonthlyFee(selectedState, category, data.price);
-        setMonthlyFee(fee);
-
-        if (fee) {
-          let calculatedAdhesionFee = fee - (fee * 0.10);
-          if (calculatedAdhesionFee < 200) {
-            calculatedAdhesionFee = 200;
-          }
-          setAdhesionFee(calculatedAdhesionFee);
-        } else {
-          setAdhesionFee(null);
-        }
-
-        setStep(5);
-      } catch (err) {
-        setError('Não foi possível carregar os detalhes do veículo.');
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchVehicleInfo();
+    if (selectedYear) {
+      setStep(5); // Move to contact form step
+    }
   }, [selectedYear]);
+
+  const handleShowQuotation = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!name || !phone) return;
+
+    setIsLoading(true);
+    setError(null);
+    try {
+      const data = await getVehicleInfo(apiVehicleType, selectedBrand, selectedModel, selectedYear);
+      setVehicleInfo(data);
+
+      const fipeValue = parseFipeValue(data.price);
+      setShowTrackerBenefit(fipeValue >= 31000);
+
+      let category: VehicleCategory = 'motorcycle';
+      if (apiVehicleType === 'cars') category = carCategory;
+      if (apiVehicleType === 'trucks') category = 'heavy';
+
+      const fee = calculateMonthlyFee(selectedState, category, data.price);
+      setMonthlyFee(fee);
+
+      if (fee) {
+        let calculatedAdhesionFee = fee - (fee * 0.10);
+        if (calculatedAdhesionFee < 200) {
+          calculatedAdhesionFee = 200;
+        }
+        setAdhesionFee(calculatedAdhesionFee);
+      } else {
+        setAdhesionFee(null);
+      }
+
+      setStep(6); // Move to results step
+    } catch (err) {
+      setError('Não foi possível carregar os detalhes do veículo.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const handleFinalSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -230,7 +235,7 @@ export const FipeQuotation: React.FC = () => {
   };
 
   const renderStep = () => {
-    if (isLoading) {
+    if (isLoading && step !== 5) { // Don't show main loader on contact form step
       return <div className="flex flex-col items-center justify-center h-64"><Loader2 className="w-12 h-12 animate-spin text-apvs-blue-900" /><p className="mt-4 text-lg font-semibold text-gray-600">Buscando informações...</p></div>;
     }
     if (error) {
@@ -301,8 +306,31 @@ export const FipeQuotation: React.FC = () => {
       case 5:
         return (
           <>
+            <h4 className="text-3xl font-extrabold text-gray-900 mb-2">Quase lá!</h4>
+            <p className="text-gray-500 mb-6">Preencha seus dados para ver o valor da sua proteção.</p>
+            <form onSubmit={handleShowQuotation} className="w-full flex flex-col gap-4">
+              <input type="text" placeholder="Seu nome completo" value={name} onChange={e => setName(e.target.value)} required className="block w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-apvs-blue-900" />
+              <input 
+                type="tel" 
+                placeholder="Seu melhor telefone (WhatsApp)" 
+                value={phone} 
+                onChange={e => setPhone(formatPhone(e.target.value))} 
+                maxLength={15}
+                required 
+                className="block w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-apvs-blue-900" 
+              />
+              <p className="text-sm text-gray-500 mt-2">Veja a cotação agora após preencher os dados.</p>
+              <button type="submit" disabled={!name || !phone || isLoading} className="w-full py-3 px-6 rounded-xl text-lg font-bold bg-apvs-green-500 hover:bg-apvs-green-600 text-white transition-all shadow-lg hover:-translate-y-1 disabled:bg-gray-400 disabled:cursor-not-allowed">
+                {isLoading ? <Loader2 className="w-6 h-6 animate-spin mx-auto" /> : 'Ver Cotação Agora'}
+              </button>
+            </form>
+          </>
+        );
+      case 6:
+        return (
+          <>
             <h4 className="text-3xl font-extrabold text-gray-900 mb-2">Resultado da Cotação</h4>
-            <p className="text-gray-500 mb-6">Confira os valores e preencha seus dados para concluir.</p>
+            <p className="text-gray-500 mb-6">Olá, {name.split(' ')[0]}! Confira os valores para seu veículo.</p>
             <div className="text-left bg-apvs-blue-50 p-6 rounded-xl border border-apvs-blue-200 mb-6 w-full space-y-2">
               <p><strong>Veículo:</strong> {vehicleInfo?.model}</p>
               <p><strong>Valor FIPE:</strong> <span className="font-bold">{vehicleInfo?.price}</span></p>
@@ -341,17 +369,7 @@ export const FipeQuotation: React.FC = () => {
               </ul>
             </div>
             
-            <form onSubmit={handleFinalSubmit} className="w-full flex flex-col gap-4">
-              <input type="text" placeholder="Seu nome completo" value={name} onChange={e => setName(e.target.value)} required className="block w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-apvs-blue-900" />
-              <input 
-                type="tel" 
-                placeholder="Seu melhor telefone (WhatsApp)" 
-                value={phone} 
-                onChange={e => setPhone(formatPhone(e.target.value))} 
-                maxLength={15}
-                required 
-                className="block w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-apvs-blue-900" 
-              />
+            <form onSubmit={handleFinalSubmit} className="w-full">
               <button type="submit" disabled={isSubmitting} className="w-full py-4 px-6 rounded-xl text-lg font-bold bg-apvs-green-500 hover:bg-apvs-green-600 text-white transition-all shadow-lg hover:-translate-y-1">
                 {isSubmitting ? <Loader2 className="w-6 h-6 animate-spin mx-auto" /> : 'Quero essa proteção!'}
               </button>
