@@ -1,6 +1,8 @@
 import React from 'react';
 import { Car, AlertTriangle, Wrench, Map, FileX, Clock } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
+import { GlowingEffect } from '@/components/GlowingEffect';
+import { cn } from '@/lib/utils';
 
 const benefits = [
   {
@@ -35,14 +37,51 @@ const benefits = [
   }
 ];
 
+interface GridItemProps {
+  icon: React.ReactNode;
+  title: string;
+  description: React.ReactNode;
+}
+
+const GridItem: React.FC<GridItemProps> = ({ icon, title, description }) => {
+  return (
+    <li className="min-h-[14rem] list-none">
+      <div className="relative h-full rounded-[1.25rem] border border-gray-200 dark:border-gray-700 p-2 md:rounded-[1.5rem] md:p-3">
+        <GlowingEffect
+          spread={40}
+          glow={true}
+          disabled={false}
+          proximity={64}
+          inactiveZone={0.01}
+          borderWidth={1}
+        />
+        <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)]">
+          <div className="relative flex flex-1 flex-col justify-between gap-3">
+            <div className="w-fit rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 p-2">
+              {icon}
+            </div>
+            <div className="space-y-3">
+              <h3 className="pt-0.5 text-xl leading-[1.375rem] font-semibold tracking-[-0.04em] md:text-2xl md:leading-[1.875rem] text-balance text-gray-900 dark:text-white">
+                {title}
+              </h3>
+              <h2 className="text-sm leading-[1.125rem] md:text-base md:leading-[1.375rem] text-gray-600 dark:text-gray-300">
+                {description}
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  );
+};
+
 export const Benefits: React.FC = () => {
   return (
     <section id="beneficios" className="relative py-24 bg-gray-50 dark:bg-gray-900">
-      {/* Gradient for dark mode */}
       <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black to-transparent pointer-events-none hidden dark:block" />
 
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row gap-12 items-center mb-16">
+        <div className="flex flex-col lg:flex-row gap-12 items-center">
           <div className="lg:w-1/3">
             <Reveal>
               <h2 className="text-apvs-accent-500 font-bold tracking-wide uppercase text-sm mb-2">Vantagens</h2>
@@ -59,19 +98,17 @@ export const Benefits: React.FC = () => {
             </Reveal>
           </div>
           
-          <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <ul className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-6">
             {benefits.map((benefit, index) => (
               <Reveal key={index} delay={index * 100} animation="scale-up">
-                <div className="p-6 rounded-2xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-blue-200 dark:hover:border-apvs-accent-500/50 transition-all duration-300 shadow-sm hover:shadow-md group h-full">
-                  <div className="w-14 h-14 rounded-xl bg-apvs-blue-50 dark:bg-apvs-blue-900/50 flex items-center justify-center mb-4 group-hover:bg-apvs-accent-500 transition-colors duration-300">
-                    <benefit.icon className="w-7 h-7 text-apvs-blue-900 dark:text-apvs-accent-500 group-hover:text-white transition-colors duration-300" />
-                  </div>
-                  <h4 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">{benefit.title}</h4>
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{benefit.description}</p>
-                </div>
+                <GridItem
+                  icon={<benefit.icon className="w-5 h-5 text-apvs-blue-900 dark:text-apvs-accent-500" />}
+                  title={benefit.title}
+                  description={benefit.description}
+                />
               </Reveal>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     </section>
