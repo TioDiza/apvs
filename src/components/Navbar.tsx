@@ -79,13 +79,22 @@ export const Navbar: React.FC = () => {
             </div>
           </nav>
 
-          {/* Mobile Menu Toggle */}
-          <button 
-            className="md:hidden p-2 rounded-md text-white"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Mobile Controls */}
+          <div className="md:hidden flex items-center gap-2">
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-full text-white bg-transparent hover:bg-white/10 transition-colors"
+              aria-label="Toggle theme"
+            >
+              {theme === 'light' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
+            </button>
+            <button 
+              className="p-2 rounded-md text-white"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -102,21 +111,14 @@ export const Navbar: React.FC = () => {
               {link.name}
             </NavLink>
           ))}
-          <div className="flex items-center gap-4 mt-2">
+          <div className="mt-2">
             <NavLink 
               href="/#cotacao" 
-              className="flex-grow bg-apvs-accent-500 text-white text-center px-6 py-3 rounded-md font-semibold"
+              className="block w-full bg-apvs-accent-500 text-white text-center px-6 py-3 rounded-md font-semibold"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Fazer Cotação Agora
             </NavLink>
-            <button
-              onClick={toggleTheme}
-              className="p-3 rounded-md text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700"
-              aria-label="Toggle theme"
-            >
-              {theme === 'light' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
-            </button>
           </div>
         </div>
       </div>
