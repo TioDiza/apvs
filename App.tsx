@@ -6,7 +6,7 @@ import { PrivacyPolicyPage } from '@/pages/PrivacyPolicyPage';
 import { LoginPage } from '@/pages/LoginPage';
 import { DashboardPage } from '@/pages/DashboardPage';
 import ProtectedRoute from '@/components/ProtectedRoute';
-import MainLayout from './components/MainLayout';
+import MainLayout from '@/components/MainLayout';
 
 const App: React.FC = () => {
   return (
