@@ -20,10 +20,10 @@ export const Footer: React.FC = () => {
               A maior associação de proteção veicular da América Latina. Protegendo o seu patrimônio com seriedade e transparência há mais de 14 anos.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-apvs-green-500 hover:text-white transition-colors">
+              <a href="https://www.instagram.com/apvsarsenal?igsh=MTczOGtsenBpY3NlbA==" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-apvs-green-500 hover:text-white transition-colors">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-apvs-green-500 hover:text-white transition-colors">
+              <a href="https://www.facebook.com/share/185C9CEhvk/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-apvs-green-500 hover:text-white transition-colors">
                 <Facebook className="w-5 h-5" />
               </a>
               <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-apvs-green-500 hover:text-white transition-colors">
