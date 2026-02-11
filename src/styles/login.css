@@ -225,6 +225,7 @@
   justify-content: space-evenly;
   flex-direction: column;
   width: 100%;
+  z-index: 2;
 }
 
 .form .title {
