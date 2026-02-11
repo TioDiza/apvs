@@ -42,9 +42,9 @@ export const Testimonials: React.FC = () => {
           {testimonials.map((item, index) => (
             <Reveal key={index} delay={index * 150} animation="fade-up">
               <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300 relative h-full flex flex-col">
-                <Quote className="absolute top-6 right-6 w-10 h-10 text-apvs-green-100 dark:text-apvs-green-500/20" />
+                <Quote className="absolute top-6 right-6 w-10 h-10 text-blue-100 dark:text-apvs-accent-500/20" />
                 
-                <div className="flex text-apvs-green-500 mb-6">
+                <div className="flex text-apvs-accent-500 mb-6">
                   {[...Array(item.rating)].map((_, i) => (
                     <Star key={i} className="w-5 h-5 fill-current" />
                   ))}

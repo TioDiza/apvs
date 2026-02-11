@@ -47,18 +47,18 @@ export const FAQ: React.FC = () => {
             <Reveal key={index} delay={index * 100}>
               <div 
                 className={`border rounded-xl overflow-hidden transition-all duration-300 ${
-                  openIndex === index ? 'border-apvs-green-500 shadow-md bg-white dark:bg-gray-800/50' : 'border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-600'
+                  openIndex === index ? 'border-apvs-accent-500 shadow-md bg-white dark:bg-gray-800/50' : 'border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-600'
                 }`}
               >
                 <button
                   className="w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none"
                   onClick={() => toggleFaq(index)}
                 >
-                  <span className={`font-semibold text-lg ${openIndex === index ? 'text-apvs-blue-900 dark:text-apvs-green-500' : 'text-gray-800 dark:text-gray-100'}`}>
+                  <span className={`font-semibold text-lg ${openIndex === index ? 'text-apvs-blue-900 dark:text-apvs-accent-500' : 'text-gray-800 dark:text-gray-100'}`}>
                     {faq.question}
                   </span>
                   <ChevronDown 
-                    className={`w-5 h-5 transition-transform duration-300 ${openIndex === index ? 'transform rotate-180 text-apvs-green-500' : 'text-gray-400 dark:text-gray-500'}`} 
+                    className={`w-5 h-5 transition-transform duration-300 ${openIndex === index ? 'transform rotate-180 text-apvs-accent-500' : 'text-gray-400 dark:text-gray-500'}`} 
                   />
                 </button>
                 <div 

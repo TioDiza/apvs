@@ -105,7 +105,7 @@ export const HeroSection: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <a 
                 href="#cotacao" 
-                className="relative overflow-hidden bg-apvs-green-500 hover:bg-apvs-green-600 text-white px-8 py-4 rounded-lg font-bold text-lg text-center transition-all transform hover:-translate-y-1 shadow-xl hover:shadow-apvs-green-500/30 flex items-center justify-center gap-2 shine-effect"
+                className="relative overflow-hidden bg-apvs-accent-500 hover:bg-apvs-accent-600 text-white px-8 py-4 rounded-lg font-bold text-lg text-center transition-all transform hover:-translate-y-1 shadow-xl hover:shadow-apvs-accent-500/30 flex items-center justify-center gap-2 shine-effect"
               >
                 Fazer cotação agora
               </a>

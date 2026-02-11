@@ -141,18 +141,18 @@ export const DashboardPage: React.FC = () => {
               </thead>
               <tbody>
                 {quotations.map(q => (
-                  <tr key={q.id} className={`border-b dark:border-gray-700 transition-colors ${q.contacted ? 'bg-green-50 dark:bg-green-900/20 hover:bg-green-100 dark:hover:bg-green-900/30' : 'bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700/50'}`}>
+                  <tr key={q.id} className={`border-b dark:border-gray-700 transition-colors ${q.contacted ? 'bg-blue-50 dark:bg-blue-900/20 hover:bg-blue-100 dark:hover:bg-blue-900/30' : 'bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700/50'}`}>
                     <td className="px-6 py-4">{new Date(q.created_at).toLocaleString('pt-BR')}</td>
                     <td className="px-6 py-4 font-medium text-gray-900 dark:text-white">{q.name}</td>
                     <td className="px-6 py-4">{q.phone}</td>
                     <td className="px-6 py-4">{q.vehicle_model} {q.vehicle_year}</td>
                     <td className="px-6 py-4">{q.vehicle_fipe_value}</td>
                     <td className="px-6 py-4 font-bold text-apvs-blue-900 dark:text-blue-300">R$ {q.adhesion_fee?.toFixed(2).replace('.', ',')}</td>
-                    <td className="px-6 py-4 font-bold text-apvs-green-600">R$ {q.monthly_fee?.toFixed(2).replace('.', ',')}</td>
+                    <td className="px-6 py-4 font-bold text-blue-600">R$ {q.monthly_fee?.toFixed(2).replace('.', ',')}</td>
                     <td className="px-6 py-4 flex items-center">
                       <button 
                         onClick={() => handleToggleContacted(q.id, q.contacted)} 
-                        className={`p-1 rounded-full transition-colors ${q.contacted ? 'text-green-600' : 'text-gray-400 hover:text-green-500'}`} 
+                        className={`p-1 rounded-full transition-colors ${q.contacted ? 'text-blue-600' : 'text-gray-400 hover:text-blue-500'}`} 
                         title={q.contacted ? 'Marcar como não contatado' : 'Marcar como contatado'}
                       >
                         <CheckCircle className="w-5 h-5" />

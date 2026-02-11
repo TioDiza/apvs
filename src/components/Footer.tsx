@@ -16,10 +16,10 @@ export const Footer: React.FC = () => {
               A maior associação de proteção veicular da América Latina. Protegendo o seu patrimônio com seriedade e transparência há mais de 14 anos.
             </p>
             <div className="flex space-x-4">
-              <a href="https://www.instagram.com/apvsarsenal?igsh=MTczOGtsenBpY3NlbA==" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-apvs-green-500 hover:text-white transition-colors">
+              <a href="https://www.instagram.com/apvsarsenal?igsh=MTczOGtsenBpY3NlbA==" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-apvs-accent-500 hover:text-white transition-colors">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="https://www.facebook.com/share/185C9CEhvk/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-apvs-green-500 hover:text-white transition-colors">
+              <a href="https://www.facebook.com/share/185C9CEhvk/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-apvs-accent-500 hover:text-white transition-colors">
                 <Facebook className="w-5 h-5" />
               </a>
             </div>
@@ -29,11 +29,11 @@ export const Footer: React.FC = () => {
           <div>
             <h4 className="text-white font-bold mb-6 uppercase text-sm tracking-wider">Acesso Rápido</h4>
             <ul className="space-y-3">
-              <li><a href="#inicio" className="hover:text-apvs-green-500 transition-colors">Início</a></li>
-              <li><a href="#como-funciona" className="hover:text-apvs-green-500 transition-colors">Como Funciona</a></li>
-              <li><a href="#beneficios" className="hover:text-apvs-green-500 transition-colors">Benefícios</a></li>
-              <li><a href="#sobre" className="hover:text-apvs-green-500 transition-colors">Sobre a APVS</a></li>
-              <li><a href="#cotacao" className="hover:text-apvs-green-500 transition-colors">Fazer Cotação</a></li>
+              <li><a href="#inicio" className="hover:text-apvs-accent-500 transition-colors">Início</a></li>
+              <li><a href="#como-funciona" className="hover:text-apvs-accent-500 transition-colors">Como Funciona</a></li>
+              <li><a href="#beneficios" className="hover:text-apvs-accent-500 transition-colors">Benefícios</a></li>
+              <li><a href="#sobre" className="hover:text-apvs-accent-500 transition-colors">Sobre a APVS</a></li>
+              <li><a href="#cotacao" className="hover:text-apvs-accent-500 transition-colors">Fazer Cotação</a></li>
             </ul>
           </div>
 
@@ -42,21 +42,21 @@ export const Footer: React.FC = () => {
             <h4 className="text-white font-bold mb-6 uppercase text-sm tracking-wider">Contato</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <Phone className="w-5 h-5 text-apvs-green-500 flex-shrink-0 mt-0.5" />
+                <Phone className="w-5 h-5 text-apvs-accent-500 flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="font-semibold text-white">Assistência 24hr</p>
                   <p className="text-sm">0800 605 4381</p>
                 </div>
               </li>
               <li className="flex items-start gap-3">
-                <Phone className="w-5 h-5 text-apvs-green-500 flex-shrink-0 mt-0.5" />
+                <Phone className="w-5 h-5 text-apvs-accent-500 flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="font-semibold text-white">Central APVS Brasil</p>
                   <p className="text-sm">(21) 98364-9788</p>
                 </div>
               </li>
               <li className="flex items-start gap-3">
-                <Mail className="w-5 h-5 text-apvs-green-500 flex-shrink-0 mt-0.5" />
+                <Mail className="w-5 h-5 text-apvs-accent-500 flex-shrink-0 mt-0.5" />
                 <p className="text-sm">regional.arsenal@apvsbrasil.com</p>
               </li>
             </ul>
@@ -66,7 +66,7 @@ export const Footer: React.FC = () => {
           <div>
             <h4 className="text-white font-bold mb-6 uppercase text-sm tracking-wider">Endereço</h4>
             <div className="flex items-start gap-3">
-              <MapPin className="w-5 h-5 text-apvs-green-500 flex-shrink-0 mt-0.5" />
+              <MapPin className="w-5 h-5 text-apvs-accent-500 flex-shrink-0 mt-0.5" />
               <p className="text-sm leading-relaxed">
                 Av. Dr. Eugênio Borges, 853 - Loja 218<br />
                 Arsenal, São Gonçalo - RJ<br />

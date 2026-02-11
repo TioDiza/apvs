@@ -42,14 +42,14 @@ export const Benefits: React.FC = () => {
         <div className="flex flex-col lg:flex-row gap-12 items-center mb-16">
           <div className="lg:w-1/3">
             <Reveal>
-              <h2 className="text-apvs-green-500 font-bold tracking-wide uppercase text-sm mb-2">Vantagens</h2>
+              <h2 className="text-apvs-accent-500 font-bold tracking-wide uppercase text-sm mb-2">Vantagens</h2>
               <h3 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-6 leading-tight">
                 Por que escolher a <span className="text-apvs-blue-900">APVS Brasil?</span>
               </h3>
               <p className="text-gray-600 dark:text-gray-300 text-lg mb-8">
                 Oferecemos as melhores coberturas do mercado com um preço justo, garantindo a tranquilidade que você e sua família merecem.
               </p>
-              <a href="#cotacao" className="text-apvs-green-600 font-bold hover:text-apvs-green-700 flex items-center gap-2 group">
+              <a href="#cotacao" className="text-apvs-accent-600 font-bold hover:text-apvs-accent-600/80 flex items-center gap-2 group">
                 Ver todos os benefícios 
                 <span className="transform group-hover:translate-x-1 transition-transform">→</span>
               </a>
@@ -59,9 +59,9 @@ export const Benefits: React.FC = () => {
           <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-6">
             {benefits.map((benefit, index) => (
               <Reveal key={index} delay={index * 100} animation="scale-up">
-                <div className="p-6 rounded-2xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-apvs-green-200 dark:hover:border-apvs-green-500/50 transition-all duration-300 shadow-sm hover:shadow-md group h-full">
-                  <div className="w-14 h-14 rounded-xl bg-apvs-blue-50 dark:bg-apvs-blue-900/50 flex items-center justify-center mb-4 group-hover:bg-apvs-green-500 transition-colors duration-300">
-                    <benefit.icon className="w-7 h-7 text-apvs-blue-900 dark:text-apvs-green-500 group-hover:text-white transition-colors duration-300" />
+                <div className="p-6 rounded-2xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-blue-200 dark:hover:border-apvs-accent-500/50 transition-all duration-300 shadow-sm hover:shadow-md group h-full">
+                  <div className="w-14 h-14 rounded-xl bg-apvs-blue-50 dark:bg-apvs-blue-900/50 flex items-center justify-center mb-4 group-hover:bg-apvs-accent-500 transition-colors duration-300">
+                    <benefit.icon className="w-7 h-7 text-apvs-blue-900 dark:text-apvs-accent-500 group-hover:text-white transition-colors duration-300" />
                   </div>
                   <h4 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">{benefit.title}</h4>
                   <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{benefit.description}</p>

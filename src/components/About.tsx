@@ -30,8 +30,8 @@ export const About: React.FC = () => {
               {/* Floating badge */}
               <div className="absolute -bottom-8 -right-8 bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-xl hidden md:block border border-gray-100 dark:border-gray-700 animate-bounce-slow">
                 <div className="flex items-center gap-4">
-                  <div className="bg-apvs-green-100 p-3 rounded-full">
-                    <Award className="w-8 h-8 text-apvs-green-600" />
+                  <div className="bg-blue-100 p-3 rounded-full">
+                    <Award className="w-8 h-8 text-apvs-accent-600" />
                   </div>
                   <div>
                     <p className="text-xs text-gray-500 dark:text-gray-400 font-bold uppercase">Eleita a Melhor</p>
@@ -44,7 +44,7 @@ export const About: React.FC = () => {
 
           <div className="w-full lg:w-1/2">
             <Reveal animation="fade-up">
-              <h2 className="text-apvs-green-500 font-bold tracking-wide uppercase text-sm mb-2">Quem Somos</h2>
+              <h2 className="text-apvs-accent-500 font-bold tracking-wide uppercase text-sm mb-2">Quem Somos</h2>
               <h3 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 dark:text-white mb-6 leading-tight">
                 A Maior Associação de Proteção Veicular da América Latina
               </h3>
@@ -61,7 +61,7 @@ export const About: React.FC = () => {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-gray-100 dark:border-gray-700">
                 {stats.map((stat, index) => (
                   <div key={index} className="flex flex-col items-start">
-                    <stat.icon className="w-8 h-8 text-apvs-blue-900 dark:text-apvs-green-500 mb-3" />
+                    <stat.icon className="w-8 h-8 text-apvs-blue-900 dark:text-apvs-accent-500 mb-3" />
                     <span className="text-2xl font-extrabold text-apvs-blue-900 dark:text-white">
                       <Counter end={stat.end} />
                       {stat.suffix}

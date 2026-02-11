@@ -34,7 +34,7 @@ const VehicleTypeSelector: React.FC<{ selected: ApiVehicleType; onSelect: (type:
           key={id}
           onClick={() => onSelect(id)}
           className={`flex flex-col items-center justify-center w-24 h-24 p-4 rounded-xl border-2 transition-all duration-300 ${
-            selected === id ? 'bg-apvs-blue-900 border-apvs-green-500 text-white shadow-lg' : 'bg-gray-100 dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:border-apvs-blue-900 hover:bg-white dark:hover:bg-gray-700'
+            selected === id ? 'bg-apvs-blue-900 border-apvs-accent-500 text-white shadow-lg' : 'bg-gray-100 dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:border-apvs-blue-900 hover:bg-white dark:hover:bg-gray-700'
           }`}
         >
           <Icon className="w-8 h-8 mb-2" />
@@ -296,7 +296,7 @@ export const FipeQuotation: React.FC = () => {
               <option value="RS">Rio Grande do Sul</option>
               <option value="PE">Pernambuco</option>
             </StyledSelect>
-            <button onClick={handleStep1Next} disabled={!selectedState} className="w-full py-3 px-6 rounded-xl text-lg font-bold bg-apvs-green-500 hover:bg-apvs-green-600 text-white transition-all shadow-lg hover:-translate-y-1 disabled:bg-gray-400 disabled:cursor-not-allowed">
+            <button onClick={handleStep1Next} disabled={!selectedState} className="w-full py-3 px-6 rounded-xl text-lg font-bold bg-apvs-accent-500 hover:bg-apvs-accent-600 text-white transition-all shadow-lg hover:-translate-y-1 disabled:bg-gray-400 disabled:cursor-not-allowed">
               Avançar
             </button>
           </>
@@ -306,8 +306,8 @@ export const FipeQuotation: React.FC = () => {
           <>
             <h4 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-6">Qual a categoria do seu carro?</h4>
             <div className="flex gap-4 mb-6">
-              <button onClick={() => { setCarCategory('light'); setStep(2); }} className="flex-1 p-4 border-2 rounded-lg font-semibold hover:border-apvs-green-500 dark:border-gray-600 dark:hover:border-apvs-green-500">Passeio Leve</button>
-              <button onClick={() => { setCarCategory('heavy'); setStep(2); }} className="flex-1 p-4 border-2 rounded-lg font-semibold hover:border-apvs-green-500 dark:border-gray-600 dark:hover:border-apvs-green-500">SUV / Pesado</button>
+              <button onClick={() => { setCarCategory('light'); setStep(2); }} className="flex-1 p-4 border-2 rounded-lg font-semibold hover:border-apvs-accent-500 dark:border-gray-600 dark:hover:border-apvs-accent-500">Passeio Leve</button>
+              <button onClick={() => { setCarCategory('heavy'); setStep(2); }} className="flex-1 p-4 border-2 rounded-lg font-semibold hover:border-apvs-accent-500 dark:border-gray-600 dark:hover:border-apvs-accent-500">SUV / Pesado</button>
             </div>
           </>
         );
@@ -358,7 +358,7 @@ export const FipeQuotation: React.FC = () => {
                 className="block w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-600 rounded-xl focus:border-apvs-blue-900 bg-transparent" 
               />
               <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">Veja a cotação agora após preencher os dados.</p>
-              <button type="submit" disabled={!name || !phone || isLoading} className="w-full py-3 px-6 rounded-xl text-lg font-bold bg-apvs-green-500 hover:bg-apvs-green-600 text-white transition-all shadow-lg hover:-translate-y-1 disabled:bg-gray-400 disabled:cursor-not-allowed">
+              <button type="submit" disabled={!name || !phone || isLoading} className="w-full py-3 px-6 rounded-xl text-lg font-bold bg-apvs-accent-500 hover:bg-apvs-accent-600 text-white transition-all shadow-lg hover:-translate-y-1 disabled:bg-gray-400 disabled:cursor-not-allowed">
                 {isLoading ? <Loader2 className="w-6 h-6 animate-spin mx-auto" /> : 'Ver Cotação Agora'}
               </button>
             </form>
@@ -377,11 +377,11 @@ export const FipeQuotation: React.FC = () => {
               )}
               <div className="pt-2 mt-2 border-t border-apvs-blue-200 dark:border-apvs-blue-800">
                 {monthlyFee ? (
-                  <p className="text-2xl font-bold text-apvs-green-600">
+                  <p className="text-2xl font-bold text-apvs-accent-600">
                     Mensalidade: R$ {monthlyFee.toFixed(2).replace('.', ',')}*
                   </p>
                 ) : (
-                  <p className="font-semibold text-apvs-blue-900 dark:text-apvs-green-500">Valor sob consulta. Fale com um especialista.</p>
+                  <p className="font-semibold text-apvs-blue-900 dark:text-apvs-accent-500">Valor sob consulta. Fale com um especialista.</p>
                 )}
                 <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">*Valor de referência, sujeito a alterações.</p>
               </div>
@@ -392,7 +392,7 @@ export const FipeQuotation: React.FC = () => {
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 text-gray-700 dark:text-gray-300">
                 {benefits.map((benefit, index) => (
                   <li key={index} className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-apvs-green-500 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-apvs-accent-500 flex-shrink-0" />
                     <span className="text-sm">{benefit}</span>
                   </li>
                 ))}
@@ -403,7 +403,7 @@ export const FipeQuotation: React.FC = () => {
             </div>
             
             <form onSubmit={handleFinalSubmit} className="w-full">
-              <button type="submit" disabled={isSubmitting} className="w-full py-4 px-6 rounded-xl text-lg font-bold bg-apvs-green-500 hover:bg-apvs-green-600 text-white transition-all shadow-lg hover:-translate-y-1">
+              <button type="submit" disabled={isSubmitting} className="w-full py-4 px-6 rounded-xl text-lg font-bold bg-apvs-accent-500 hover:bg-apvs-accent-600 text-white transition-all shadow-lg hover:-translate-y-1">
                 {isSubmitting ? <Loader2 className="w-6 h-6 animate-spin mx-auto" /> : 'Quero essa proteção!'}
               </button>
             </form>
@@ -421,7 +421,7 @@ export const FipeQuotation: React.FC = () => {
           <div className="w-full md:w-5/12 bg-apvs-blue-50 dark:bg-gray-800/50 p-8 md:p-12 flex flex-col justify-center">
             <Reveal animation="slide-right">
               <div className="flex items-center gap-3 mb-6">
-                <Shield className="w-8 h-8 text-apvs-green-500" />
+                <Shield className="w-8 h-8 text-apvs-accent-500" />
                 <h3 className="text-2xl font-bold text-apvs-blue-900 dark:text-white">Cotação Online FIPE</h3>
               </div>
               <p className="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
@@ -430,7 +430,7 @@ export const FipeQuotation: React.FC = () => {
               <ul className="space-y-4">
                 {['Cotação baseada na Tabela FIPE', 'Processo 100% online', 'Rápido e sem compromisso', 'Dados seguros e protegidos'].map((item, idx) => (
                   <li key={idx} className="flex items-center gap-3 text-gray-700 dark:text-gray-200 font-medium">
-                    <CheckCircle2 className="w-5 h-5 text-apvs-green-500 flex-shrink-0" />
+                    <CheckCircle2 className="w-5 h-5 text-apvs-accent-500 flex-shrink-0" />
                     {item}
                   </li>
                 ))}

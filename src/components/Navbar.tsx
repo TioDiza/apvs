@@ -55,7 +55,7 @@ export const Navbar: React.FC = () => {
                 <li key={link.name}>
                   <NavLink 
                     href={link.href} 
-                    className="text-sm font-medium text-gray-200 hover:text-apvs-green-500 transition-colors"
+                    className="text-sm font-medium text-gray-200 hover:text-apvs-accent-500 transition-colors"
                   >
                     {link.name}
                   </NavLink>
@@ -65,7 +65,7 @@ export const Navbar: React.FC = () => {
             <div className="flex items-center gap-4">
               <NavLink 
                 href="/#cotacao" 
-                className="relative overflow-hidden bg-apvs-green-500 hover:bg-apvs-green-600 text-white px-6 py-2.5 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg shine-effect"
+                className="relative overflow-hidden bg-apvs-accent-500 hover:bg-apvs-accent-600 text-white px-6 py-2.5 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg shine-effect"
               >
                 Cotação Online
               </NavLink>
@@ -104,7 +104,7 @@ export const Navbar: React.FC = () => {
           ))}
           <NavLink 
             href="/#cotacao" 
-            className="bg-apvs-green-500 text-white text-center px-6 py-3 rounded-md font-semibold mt-2"
+            className="bg-apvs-accent-500 text-white text-center px-6 py-3 rounded-md font-semibold mt-2"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Fazer Cotação Agora
