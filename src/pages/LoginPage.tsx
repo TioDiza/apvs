@@ -35,69 +35,129 @@ export const LoginPage: React.FC = () => {
   return (
     <div className="bg-gray-50 min-h-screen flex items-center justify-center p-4">
       <div className="card">
-        <input 
-          id="blind-check" 
-          className="blind-check" 
-          type="checkbox" 
-          hidden 
+        <input
           checked={isPasswordVisible}
-          onChange={() => {}} // dummy onChange to prevent warning
+          onChange={() => setIsPasswordVisible(!isPasswordVisible)}
+          className="blind-check"
+          type="checkbox"
+          id="blind-input"
+          name="blindcheck"
+          hidden
         />
-        <div className="avatar">
-          <svg id="monkey" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <path d="M50 95c-24.853 0-45-20.147-45-45S25.147 5 50 5s45 20.147 45 45-20.147 45-45 45z" fill="#f2d2b1"></path>
-            <path d="M50 92.5c-23.474 0-42.5-19.026-42.5-42.5S26.526 7.5 50 7.5s42.5 19.026 42.5 42.5-19.026 42.5-42.5 42.5z" fill="#f2ae72"></path>
-            <path d="M49.999 84.848c-18.151 0-32.879-15.634-32.879-34.848S31.848 15.152 50 15.152c18.15 0 32.878 15.634 32.878 34.848S68.15 84.848 49.999 84.848z" fill="#e38752"></path>
-            <path d="M50 82.348c-16.78 0-30.379-14.543-30.379-32.348S33.22 17.652 50 17.652c16.78 0 30.378 14.543 30.378 32.348S66.78 82.348 50 82.348z" fill="#e39e73"></path>
-            <path d="M38.828 53.727c-4.072 0-7.379-3.307-7.379-7.379s3.307-7.379 7.379-7.379 7.379 3.307 7.379 7.379-3.307 7.379-7.379 7.379z" fill="#f2d2b1"></path>
-            <path d="M61.172 53.727c-4.072 0-7.379-3.307-7.379-7.379s3.307-7.379 7.379-7.379 7.379 3.307 7.379 7.379-3.307 7.379-7.379 7.379z" fill="#f2d2b1"></path>
-            <g className="monkey-eye-nose">
-                <path d="M50 46.348c-1.381 0-2.5-1.119-2.5-2.5s1.119-2.5 2.5-2.5 2.5 1.119 2.5 2.5-1.119 2.5-2.5 2.5z" fill="#3c302a"></path>
-                <path d="M48.5 43.848a1 1 0 01-1-1v-2.5a1 1 0 012 0v2.5a1 1 0 01-1 1z" fill="#3c302a"></path>
-                <path d="M51.5 43.848a1 1 0 01-1-1v-2.5a1 1 0 012 0v2.5a1 1 0 01-1 1z" fill="#3c302a"></path>
-            </g>
-            <ellipse className="monkey-eye-l" cx="38.828" cy="31.7" rx="5.5" ry="4.5" fill="#3c302a"></ellipse>
-            <ellipse className="monkey-eye-r" cx="61.172" cy="31.7" rx="5.5" ry="4.5" fill="#3c302a"></ellipse>
-          </svg>
-          <svg id="monkey-hands" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <path d="M85.435 50.833c0-2.34-1.903-4.243-4.243-4.243h-9.898c-2.34 0-4.243 1.903-4.243 4.243v12.728c0 2.34 1.903 4.243 4.243 4.243h9.898c2.34 0 4.243-1.903 4.243-4.243v-12.728z" fill="#f2ae72"></path>
-            <path d="M81.192 67.804h-9.898c-2.34 0-4.243-1.903-4.243-4.243V50.833c0-2.34 1.903-4.243 4.243-4.243h9.898c2.34 0 4.243 1.903 4.243 4.243v12.728c0 2.34-1.903 4.243-4.243 4.243z" fill="#f2d2b1"></path>
-            <path d="M14.565 50.833c0-2.34 1.903-4.243 4.243-4.243h9.898c2.34 0 4.243 1.903 4.243 4.243v12.728c0 2.34-1.903 4.243-4.243 4.243h-9.898c-2.34 0-4.243-1.903-4.243-4.243v-12.728z" fill="#f2ae72"></path>
-            <path d="M18.808 67.804h-9.898c-2.34 0-4.243-1.903-4.243-4.243V50.833c0-2.34 1.903-4.243 4.243-4.243h9.898c2.34 0 4.243 1.903 4.243 4.243v12.728c0 2.34-1.903 4.243-4.243 4.243z" fill="#f2d2b1"></path>
-          </svg>
-        </div>
+
+        <label htmlFor="blind-input" className="blind_input">
+          <span className="hide">ESCONDER</span>
+          <span className="show">MOSTRAR</span>
+        </label>
+
         <form className="form" onSubmit={handleLogin}>
-          <p className="title">Acesso ao Dashboard</p>
-          <label className="label_input">Email</label>
-          <input 
-            className="input" 
-            type="email" 
+          <div className="title">Acesso ao Dashboard</div>
+
+          <label className="label_input" htmlFor="email-input">Email</label>
+          <input
+            spellCheck={false}
+            className="input"
+            type="email"
+            name="email"
+            id="email-input"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          <label className="label_input">Senha</label>
-          <input 
-            id="password-input" 
-            className="input" 
+
+          <label className="label_input" htmlFor="password-input">Senha</label>
+          <input
+            spellCheck={false}
+            className="input"
             type="text"
+            name="password"
+            id="password-input"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <label 
-            htmlFor="blind-check" 
-            className="blind_input"
-            onClick={() => setIsPasswordVisible(!isPasswordVisible)}
-          >
-            <span className="show">MOSTRAR</span>
-            <span className="hide">ESCONDER</span>
-          </label>
-          {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
-          <button type="submit" className="submit" disabled={loading}>
+          
+          {error && <p className="text-red-500 text-sm mt-2 text-center w-full">{error}</p>}
+
+          <button className="submit" type="submit" disabled={loading}>
             {loading ? <Loader2 className="w-5 h-5 animate-spin mx-auto" /> : 'Entrar'}
           </button>
         </form>
+
+        <label htmlFor="blind-input" className="avatar">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="35"
+            height="35"
+            viewBox="0 0 64 64"
+            id="monkey"
+          >
+            <ellipse cx="53.7" cy="33" rx="8.3" ry="8.2" fill="#89664c"></ellipse>
+            <ellipse cx="53.7" cy="33" rx="5.4" ry="5.4" fill="#ffc5d3"></ellipse>
+            <ellipse cx="10.2" cy="33" rx="8.2" ry="8.2" fill="#89664c"></ellipse>
+            <ellipse cx="10.2" cy="33" rx="5.4" ry="5.4" fill="#ffc5d3"></ellipse>
+            <g fill="#89664c">
+              <path
+                d="m43.4 10.8c1.1-.6 1.9-.9 1.9-.9-3.2-1.1-6-1.8-8.5-2.1 1.3-1 2.1-1.3 2.1-1.3-20.4-2.9-30.1 9-30.1 19.5h46.4c-.7-7.4-4.8-12.4-11.8-15.2"
+              ></path>
+              <path
+                d="m55.3 27.6c0-9.7-10.4-17.6-23.3-17.6s-23.3 7.9-23.3 17.6c0 2.3.6 4.4 1.6 6.4-1 2-1.6 4.2-1.6 6.4 0 9.7 10.4 17.6 23.3 17.6s23.3-7.9 23.3-17.6c0-2.3-.6-4.4-1.6-6.4 1-2 1.6-4.2 1.6-6.4"
+              ></path>
+            </g>
+            <path
+              d="m52 28.2c0-16.9-20-6.1-20-6.1s-20-10.8-20 6.1c0 4.7 2.9 9 7.5 11.7-1.3 1.7-2.1 3.6-2.1 5.7 0 6.1 6.6 11 14.7 11s14.7-4.9 14.7-11c0-2.1-.8-4-2.1-5.7 4.4-2.7 7.3-7 7.3-11.7"
+              fill="#e0ac7e"
+            ></path>
+            <g fill="#3b302a" className="monkey-eye-nose">
+              <path
+                d="m35.1 38.7c0 1.1-.4 2.1-1 2.1-.6 0-1-.9-1-2.1 0-1.1.4-2.1 1-2.1.6.1 1 1 1 2.1"
+              ></path>
+              <path
+                d="m30.9 38.7c0 1.1-.4 2.1-1 2.1-.6 0-1-.9-1-2.1 0-1.1.4-2.1 1-2.1.5.1 1 1 1 2.1"
+              ></path>
+              <ellipse
+                cx="40.7"
+                cy="31.7"
+                rx="3.5"
+                ry="4.5"
+                className="monkey-eye-r"
+              ></ellipse>
+              <ellipse
+                cx="23.3"
+                cy="31.7"
+                rx="3.5"
+                ry="4.5"
+                className="monkey-eye-l"
+              ></ellipse>
+            </g>
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="35"
+            height="35"
+            viewBox="0 0 64 64"
+            id="monkey-hands"
+          >
+            <path
+              fill="#89664C"
+              d="M9.4,32.5L2.1,61.9H14c-1.6-7.7,4-21,4-21L9.4,32.5z"
+            ></path>
+            <path
+              fill="#FFD6BB"
+              d="M15.8,24.8c0,0,4.9-4.5,9.5-3.9c2.3,0.3-7.1,7.6-7.1,7.6s9.7-8.2,11.7-5.6c1.8,2.3-8.9,9.8-8.9,9.8
+          s10-8.1,9.6-4.6c-0.3,3.8-7.9,12.8-12.5,13.8C11.5,43.2,6.3,39,9.8,24.4C11.6,17,13.3,25.2,15.8,24.8"
+            ></path>
+            <path
+              fill="#89664C"
+              d="M54.8,32.5l7.3,29.4H50.2c1.6-7.7-4-21-4-21L54.8,32.5z"
+            ></path>
+            <path
+              fill="#FFD6BB"
+              d="M48.4,24.8c0,0-4.9-4.5-9.5-3.9c-2.3,0.3,7.1,7.6,7.1,7.6s-9.7-8.2-11.7-5.6c-1.8,2.3,8.9,9.8,8.9,9.8
+          s-10-8.1-9.7-4.6c0.4,3.8,8,12.8,12.6,13.8c6.6,1.3,11.8-2.9,8.3-17.5C52.6,17,50.9,25.2,48.4,24.8"
+            ></path>
+          </svg>
+        </label>
       </div>
     </div>
   );
