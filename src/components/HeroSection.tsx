@@ -17,6 +17,7 @@ export const HeroSection: React.FC = () => {
   const [wordIndex, setWordIndex] = useState(0);
   const [text, setText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
+  const [animationComplete, setAnimationComplete] = useState(false);
 
   useEffect(() => {
     const typingSpeed = 150;
@@ -36,6 +37,7 @@ export const HeroSection: React.FC = () => {
       if (!isDeleting && text === currentWord) {
         // If it's the last word ("Completa"), stop the animation.
         if (wordIndex === words.length - 1) {
+          setAnimationComplete(true);
           return; 
         }
         // Pause at the end of a word, then start deleting
@@ -82,7 +84,7 @@ export const HeroSection: React.FC = () => {
                   {/* The actual animated text */}
                   <span className="absolute left-0 top-0">
                     {text}
-                    <span className="animate-pulse opacity-75">|</span>
+                    {!animationComplete && <span className="animate-pulse opacity-75">|</span>}
                   </span>
                 </span>
                 <span>para o</span>
