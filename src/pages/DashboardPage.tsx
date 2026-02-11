@@ -85,18 +85,18 @@ export const DashboardPage: React.FC = () => {
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen py-32 relative">
+    <div className="bg-gradient-to-br from-apvs-blue-800 to-apvs-blue-900 min-h-screen py-32 relative">
       <img src={logo} alt="APVS Brasil Logo" className="absolute top-8 left-8 w-48" />
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="flex justify-between items-center mb-8">
           <div>
-            <h1 className="text-4xl font-extrabold text-apvs-blue-900">Dashboard de Cotações</h1>
-            <p className="text-gray-500 mt-1">Lista de Leads que fizeram cotação APVS - BRASIL</p>
+            <h1 className="text-4xl font-extrabold text-white">Dashboard de Cotações</h1>
+            <p className="text-blue-200 mt-1">Lista de Leads que fizeram cotação APVS - BRASIL</p>
           </div>
           <div className="flex items-center gap-4">
             <button
               onClick={fetchQuotations}
-              className="bg-apvs-blue-900 hover:bg-apvs-blue-800 text-white px-4 py-2 rounded-lg font-bold transition-colors flex items-center gap-2"
+              className="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white px-4 py-2 rounded-lg font-bold transition-colors flex items-center gap-2"
             >
               <RefreshCw className="w-5 h-5" />
               Atualizar
