@@ -37,7 +37,10 @@ const benefits = [
 
 export const Benefits: React.FC = () => {
   return (
-    <section id="beneficios" className="py-24 bg-gray-50 dark:bg-gray-900">
+    <section id="beneficios" className="relative py-24 bg-gray-50 dark:bg-gray-900">
+      {/* Gradient for dark mode */}
+      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black to-transparent pointer-events-none hidden dark:block" />
+
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row gap-12 items-center mb-16">
           <div className="lg:w-1/3">

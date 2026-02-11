@@ -12,7 +12,10 @@ const stats = [
 
 export const About: React.FC = () => {
   return (
-    <section id="sobre" className="py-24 bg-gray-50 dark:bg-gray-900 overflow-hidden">
+    <section id="sobre" className="relative py-24 bg-gray-50 dark:bg-gray-900 overflow-hidden">
+      {/* Gradient for dark mode */}
+      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black to-transparent pointer-events-none hidden dark:block" />
+
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center gap-16">
           

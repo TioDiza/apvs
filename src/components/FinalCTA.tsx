@@ -5,6 +5,9 @@ import { Reveal } from '@/components/Reveal';
 export const FinalCTA: React.FC = () => {
   return (
     <section className="relative py-24 bg-apvs-blue-900 overflow-hidden">
+      {/* Gradient Overlay */}
+      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-white dark:from-gray-900 to-transparent pointer-events-none"></div>
+
       {/* Background patterns */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-0 w-64 h-64 bg-white rounded-full mix-blend-overlay filter blur-3xl transform -translate-x-1/2 -translate-y-1/2 animate-pulse"></div>

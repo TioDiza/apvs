@@ -415,7 +415,10 @@ export const FipeQuotation: React.FC = () => {
   };
 
   return (
-    <section id="cotacao" className="py-20 bg-gray-50 dark:bg-black">
+    <section id="cotacao" className="relative py-20 bg-gray-50 dark:bg-black">
+      {/* Gradient for dark mode */}
+      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-gray-900 to-transparent pointer-events-none hidden dark:block" />
+
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto bg-white dark:bg-gray-900 rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
           <div className="w-full md:w-5/12 bg-apvs-blue-50 dark:bg-gray-800/50 p-8 md:p-12 flex flex-col justify-center">
