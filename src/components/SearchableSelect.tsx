@@ -11,10 +11,9 @@ interface SearchableSelectProps {
   options: Option[];
   onSelect: (value: string) => void;
   disabled?: boolean;
-  value: string;
 }
 
-const SearchableSelect: React.FC<SearchableSelectProps> = ({ label, placeholder, options, onSelect, disabled, value }) => {
+const SearchableSelect: React.FC<SearchableSelectProps> = ({ label, placeholder, options, onSelect, disabled }) => {
   const dataListId = `datalist-${label.replace(/\s+/g, '-')}`;
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
