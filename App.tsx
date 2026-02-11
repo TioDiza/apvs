@@ -1,38 +1,32 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Navbar } from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
-import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { HomePage } from '@/pages/HomePage';
 import { TermsOfUsePage } from '@/pages/TermsOfUsePage';
 import { PrivacyPolicyPage } from '@/pages/PrivacyPolicyPage';
-import ScrollToTop from '@/components/ScrollToTop';
 import { LoginPage } from '@/pages/LoginPage';
 import { DashboardPage } from '@/pages/DashboardPage';
 import ProtectedRoute from '@/components/ProtectedRoute';
+import MainLayout from './components/MainLayout';
 
 const App: React.FC = () => {
   return (
-    <div className="relative w-full min-h-screen overflow-x-hidden selection:bg-apvs-green-500 selection:text-white">
-      <Navbar />
-      <ScrollToTop />
-      <Routes>
+    <Routes>
+      <Route element={<MainLayout />}>
         <Route path="/" element={<HomePage />} />
         <Route path="/termos-de-uso" element={<TermsOfUsePage />} />
         <Route path="/politica-de-privacidade" element={<PrivacyPolicyPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route 
-          path="/dashboard" 
-          element={
-            <ProtectedRoute>
-              <DashboardPage />
-            </ProtectedRoute>
-          } 
-        />
-      </Routes>
-      <Footer />
-      <WhatsAppButton />
-    </div>
+      </Route>
+
+      <Route path="/login" element={<LoginPage />} />
+      <Route 
+        path="/dashboard" 
+        element={
+          <ProtectedRoute>
+            <DashboardPage />
+          </ProtectedRoute>
+        } 
+      />
+    </Routes>
   );
 };
 
