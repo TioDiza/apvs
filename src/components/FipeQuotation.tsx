@@ -80,7 +80,6 @@ export const FipeQuotation: React.FC = () => {
   const [vehicleInfo, setVehicleInfo] = useState<VehicleInfo | null>(null);
   const [monthlyFee, setMonthlyFee] = useState<number | null>(null);
   const [adhesionFee, setAdhesionFee] = useState<number | null>(null);
-  const [showTrackerBenefit, setShowTrackerBenefit] = useState(true);
   
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -89,22 +88,27 @@ export const FipeQuotation: React.FC = () => {
   const [phone, setPhone] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const benefits = [
-    "Roubo e Furto",
-    "Colisão e Perda Total",
-    "Incêndio",
-    "Fenômenos da Natureza",
-    "Proteção a Terceiros (R$ 50 mil)",
-    "Guincho",
-    "Socorro Elétrico/Mecânico",
-    "Troca De Pneu",
-    "Chaveiro",
-    "Pane Seca",
-    "Hospedagem",
-    "Assistência Residencial",
-    "Assistência Funeral",
-    "Assistência PET",
-  ];
+  const benefitsData = {
+    cars: [
+      "Roubo e Furto", "Colisão e Perda Total", "Incêndio", "Fenômenos da Natureza",
+      "Proteção a Terceiros (R$ 50 mil)", "Guincho", "Socorro Elétrico/Mecânico",
+      "Troca De Pneu", "Chaveiro", "Pane Seca", "Hospedagem", "Assistência Residencial",
+      "Assistência Funeral", "Assistência PET",
+    ],
+    trucks: [
+      "Roubo e Furto", "Colisão e Perda Total", "Incêndio", "Fenômenos da Natureza",
+      "Proteção a Terceiros (R$ 50 mil)", "Guincho", "Socorro Elétrico/Mecânico",
+      "Troca De Pneu", "Chaveiro", "Pane Seca", "Hospedagem", "Assistência Residencial",
+      "Assistência Funeral", "Assistência PET",
+    ],
+    motorcycles: [
+      "Roubo e Furto", "Colisão e Perda Total", "Incêndio", "Fenômenos da Natureza",
+      "Proteção a Terceiros (R$ 20 mil)", "Assistência 24 Horas - 200 KM",
+      "Assistência Residencial", "Assistência Funeral", "Assistência PET",
+    ],
+  };
+
+  const benefits = benefitsData[apiVehicleType];
 
   const parseFipeValue = (fipeString: string): number => {
     if (!fipeString) return 0;
@@ -125,7 +129,6 @@ export const FipeQuotation: React.FC = () => {
     setVehicleInfo(null);
     setMonthlyFee(null);
     setAdhesionFee(null);
-    setShowTrackerBenefit(true);
     setError(null);
     setName('');
     setPhone('');
@@ -213,9 +216,6 @@ export const FipeQuotation: React.FC = () => {
     try {
       const data = await getVehicleInfo(apiVehicleType, selectedBrand, selectedModel, selectedYear);
       setVehicleInfo(data);
-
-      const fipeValue = parseFipeValue(data.price);
-      setShowTrackerBenefit(fipeValue >= 31000);
 
       let category: VehicleCategory = 'motorcycle';
       if (apiVehicleType === 'cars') category = carCategory;
