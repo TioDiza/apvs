@@ -45,11 +45,8 @@ interface GridItemProps {
 
 const GridItem: React.FC<GridItemProps> = ({ icon, title, description }) => {
   return (
-    <li className="min-h-[14rem] list-none group">
+    <li className="min-h-[14rem] list-none">
       <div className="relative h-full rounded-[1.25rem] border border-gray-200 dark:border-gray-700 p-2 md:rounded-[1.5rem] md:p-3">
-        {/* This div will handle the pulsing glow on hover */}
-        <div className="absolute -inset-px rounded-[inherit] animate-pulse-glow opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-        
         <GlowingEffect
           spread={60}
           glow={true}
