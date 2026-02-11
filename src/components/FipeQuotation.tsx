@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getBrands, getModels, getYears, getVehicleInfo, Brand, Model, Year, VehicleInfo } from '@/services/fipeApi';
 import { calculateMonthlyFee, VehicleCategory } from '@/services/pricingData';
 import { Reveal } from '@/components/Reveal';
-import { Car, Bike, Truck, Shield, CheckCircle2, MapPin, Loader2, AlertCircle, RefreshCw, Signal, CalendarPlus, ShieldCheck } from 'lucide-react';
+import { Car, Bike, Truck, Shield, CheckCircle2, Loader2, AlertCircle, RefreshCw } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 
 type ApiVehicleType = 'cars' | 'motorcycles' | 'trucks';
@@ -253,7 +253,7 @@ export const FipeQuotation: React.FC = () => {
       vehicle_type: apiVehicleType,
       vehicle_brand: brands.find(b => b.code === selectedBrand)?.name,
       vehicle_model: vehicleInfo?.model,
-      vehicle_year: vehicleInfo?.modelYear.toString(),
+      vehicle_year: vehicleInfo?.modelYear?.toString(),
       vehicle_fipe_value: vehicleInfo?.price,
       monthly_fee: monthlyFee,
       adhesion_fee: adhesionFee,
