@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { getBrands, getModels, getYears, getVehicleInfo, Brand, Model, Year, VehicleInfo } from '@/services/fipeApi';
 import { Reveal } from '@/components/Reveal';
-import { Car, Motorcycle, Truck, Shield, CheckCircle2, ArrowRight, Loader2, AlertCircle, RefreshCw } from 'lucide-react';
+import { Car, Bike, Truck, Shield, CheckCircle2, ArrowRight, Loader2, AlertCircle, RefreshCw } from 'lucide-react';
 
 type VehicleType = 'cars' | 'motorcycles' | 'trucks';
 
 const VehicleTypeSelector: React.FC<{ selected: VehicleType; onSelect: (type: VehicleType) => void }> = ({ selected, onSelect }) => {
   const types: { id: VehicleType; label: string; icon: React.ElementType }[] = [
     { id: 'cars', label: 'Carro', icon: Car },
-    { id: 'motorcycles', label: 'Moto', icon: Motorcycle },
+    { id: 'motorcycles', label: 'Moto', icon: Bike },
     { id: 'trucks', label: 'Caminhão', icon: Truck },
   ];
 
