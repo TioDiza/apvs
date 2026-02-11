@@ -7,6 +7,9 @@ import { HomePage } from '@/pages/HomePage';
 import { TermsOfUsePage } from '@/pages/TermsOfUsePage';
 import { PrivacyPolicyPage } from '@/pages/PrivacyPolicyPage';
 import ScrollToTop from '@/components/ScrollToTop';
+import { LoginPage } from '@/pages/LoginPage';
+import { DashboardPage } from '@/pages/DashboardPage';
+import ProtectedRoute from '@/components/ProtectedRoute';
 
 const App: React.FC = () => {
   return (
@@ -17,6 +20,15 @@ const App: React.FC = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/termos-de-uso" element={<TermsOfUsePage />} />
         <Route path="/politica-de-privacidade" element={<PrivacyPolicyPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route 
+          path="/dashboard" 
+          element={
+            <ProtectedRoute>
+              <DashboardPage />
+            </ProtectedRoute>
+          } 
+        />
       </Routes>
       <Footer />
       <WhatsAppButton />

@@ -3,6 +3,7 @@ import { getBrands, getModels, getYears, getVehicleInfo, Brand, Model, Year, Veh
 import { calculateMonthlyFee, VehicleCategory } from '@/services/pricingData';
 import { Reveal } from '@/components/Reveal';
 import { Car, Bike, Truck, Shield, CheckCircle2, MapPin, Loader2, AlertCircle, RefreshCw, Signal, CalendarPlus, ShieldCheck } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
 
 type ApiVehicleType = 'cars' | 'motorcycles' | 'trucks';
 
@@ -241,14 +242,34 @@ export const FipeQuotation: React.FC = () => {
     }
   };
 
-  const handleFinalSubmit = (e: React.FormEvent) => {
+  const handleFinalSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
-      alert(`Cotação para ${name} (${phone}) enviada com sucesso! Entraremos em contato.`);
-      setIsSubmitting(false);
+
+    const quotationData = {
+      name: name,
+      phone: phone,
+      state: selectedState,
+      vehicle_type: apiVehicleType,
+      vehicle_brand: brands.find(b => b.code === selectedBrand)?.name,
+      vehicle_model: vehicleInfo?.model,
+      vehicle_year: vehicleInfo?.modelYear.toString(),
+      vehicle_fipe_value: vehicleInfo?.price,
+      monthly_fee: monthlyFee,
+      adhesion_fee: adhesionFee,
+    };
+
+    const { error } = await supabase.from('quotations').insert([quotationData]);
+
+    if (error) {
+      console.error('Error saving quotation:', error);
+      alert(`Ocorreu um erro ao salvar sua cotação. Por favor, tente novamente.`);
+    } else {
+      alert(`Cotação para ${name} enviada com sucesso! Entraremos em contato.`);
       reset();
-    }, 1500);
+    }
+    
+    setIsSubmitting(false);
   };
 
   const renderStep = () => {
