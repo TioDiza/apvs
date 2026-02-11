@@ -19,11 +19,11 @@ export const About: React.FC = () => {
           <div className="w-full lg:w-1/2 relative">
             <Reveal animation="slide-right">
               {/* Image composition */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl glowing-border">
+              <div className="relative rounded-2xl shadow-2xl glowing-border">
                 <img 
                   src={aboutImage} 
                   alt="Veículos protegidos pela APVS Brasil, incluindo carro, caminhão, moto e barco" 
-                  className="w-full h-auto object-cover"
+                  className="w-full h-auto object-cover rounded-2xl relative z-10"
                 />
               </div>
               
