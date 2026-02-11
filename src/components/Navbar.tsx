@@ -47,6 +47,7 @@ export const Navbar: React.FC = () => {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
+            <div className="h-8 w-px bg-white/30"></div>
             <ul className="flex items-center gap-6">
               {navLinks.map((link) => (
                 <li key={link.name}>
