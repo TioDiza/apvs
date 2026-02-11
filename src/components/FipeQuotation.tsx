@@ -296,20 +296,20 @@ export const FipeQuotation: React.FC = () => {
               </div>
             </div>
 
-            <div className="text-left w-full space-y-3 mb-6">
-              <h5 className="font-bold text-lg text-gray-800">Vantagens da sua adesão:</h5>
-              <ul className="space-y-2 text-gray-600">
-                <li className="flex items-center gap-3">
-                  <Signal className="w-5 h-5 text-apvs-green-500 flex-shrink-0" />
-                  <span><strong>Rastreador já incluso</strong> na sua taxa de adesão.</span>
+            <div className="text-left w-full space-y-3 mb-6 bg-apvs-blue-50 p-4 rounded-lg border-l-4 border-apvs-green-500">
+              <h5 className="font-bold text-lg text-gray-800 mb-3">Vantagens da sua adesão:</h5>
+              <ul className="space-y-2 text-gray-700">
+                <li className="flex items-start gap-3">
+                  <Signal className="w-5 h-5 text-apvs-green-500 flex-shrink-0 mt-1" />
+                  <p><span className="font-bold text-apvs-blue-900">Rastreador já incluso</span> na sua taxa de adesão.</p>
                 </li>
-                <li className="flex items-center gap-3">
-                  <CalendarPlus className="w-5 h-5 text-apvs-green-500 flex-shrink-0" />
-                  <span>Pague a 1ª mensalidade só <strong>daqui a 30 dias</strong>.</span>
+                <li className="flex items-start gap-3">
+                  <CalendarPlus className="w-5 h-5 text-apvs-green-500 flex-shrink-0 mt-1" />
+                  <p>Pague a 1ª mensalidade só <span className="font-bold text-apvs-blue-900">daqui a 30 dias</span>.</p>
                 </li>
-                <li className="flex items-center gap-3">
-                  <ShieldCheck className="w-5 h-5 text-apvs-green-500 flex-shrink-0" />
-                  <span>Seu veículo <strong>protegido na hora</strong> após o pagamento.</span>
+                <li className="flex items-start gap-3">
+                  <ShieldCheck className="w-5 h-5 text-apvs-green-500 flex-shrink-0 mt-1" />
+                  <p>Seu veículo <span className="font-bold text-apvs-blue-900">protegido na hora</span> após o pagamento.</p>
                 </li>
               </ul>
             </div>
