@@ -88,6 +88,18 @@ export const FipeQuotation: React.FC = () => {
   const [phone, setPhone] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const benefits = [
+    "Assistência 24h Completa",
+    "Roubo e Furto",
+    "Colisão e Perda Total",
+    "Incêndio",
+    "Fenômenos da Natureza",
+    "Assistência Residencial",
+    "Assistência Funeral",
+    "Assistência PET",
+    "Proteção a Terceiros (R$ 50 mil)",
+  ];
+
   const parseFipeValue = (fipeString: string): number => {
     if (!fipeString) return 0;
     return parseFloat(fipeString.replace('R$ ', '').replace(/\./g, '').replace(',', '.'));
@@ -349,24 +361,19 @@ export const FipeQuotation: React.FC = () => {
               </div>
             </div>
 
-            <div className="text-left w-full space-y-3 mb-6 bg-apvs-blue-50 p-4 rounded-lg border-l-4 border-apvs-green-500">
-              <h5 className="font-bold text-lg text-gray-800 mb-3">Vantagens da sua adesão:</h5>
-              <ul className="space-y-2 text-gray-700">
-                {showTrackerBenefit && (
-                  <li className="flex items-start gap-3">
-                    <Signal className="w-5 h-5 text-apvs-green-500 flex-shrink-0 mt-1" />
-                    <p><span className="font-bold text-apvs-blue-900">Rastreador já incluso</span> na sua taxa de adesão.</p>
+            <div className="text-left w-full space-y-3 mb-6">
+              <h5 className="font-bold text-lg text-gray-800 mb-3">Benefícios do Plano Prata:</h5>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 text-gray-700">
+                {benefits.map((benefit, index) => (
+                  <li key={index} className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-apvs-green-500 flex-shrink-0" />
+                    <span className="text-sm">{benefit}</span>
                   </li>
-                )}
-                <li className="flex items-start gap-3">
-                  <CalendarPlus className="w-5 h-5 text-apvs-green-500 flex-shrink-0 mt-1" />
-                  <p>Pague a 1ª mensalidade só <span className="font-bold text-apvs-blue-900">daqui a 30 dias</span>.</p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <ShieldCheck className="w-5 h-5 text-apvs-green-500 flex-shrink-0 mt-1" />
-                  <p>Seu veículo <span className="font-bold text-apvs-blue-900">protegido na hora</span> após o pagamento.</p>
-                </li>
+                ))}
               </ul>
+              <p className="text-xs text-gray-500 mt-4 pt-2 border-t border-gray-200">
+                *Os benefícios podem ser alterados, conforme o plano contratado.
+              </p>
             </div>
             
             <form onSubmit={handleFinalSubmit} className="w-full">
