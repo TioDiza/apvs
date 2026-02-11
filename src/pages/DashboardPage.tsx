@@ -90,6 +90,9 @@ export const DashboardPage: React.FC = () => {
         <div className="flex justify-center mb-8">
           <img src={logo} alt="APVS Brasil Logo" className="w-48" />
         </div>
+        <div className="text-center mb-8">
+          <p className="text-xl text-blue-200">Bem Vindo Corretor de Seguros Gabriel Ferreira Siqueira Andrade</p>
+        </div>
         <div className="flex justify-between items-center mb-8">
           <div>
             <h1 className="text-4xl font-extrabold text-white">Dashboard de Cotações</h1>
