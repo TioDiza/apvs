@@ -392,7 +392,7 @@ export const FipeQuotation: React.FC = () => {
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 text-gray-700 dark:text-gray-300">
                 {benefits.map((benefit, index) => (
                   <li key={index} className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-apvs-accent-500 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-apvs-accent-500 dark:text-amber-400 flex-shrink-0" />
                     <span className="text-sm">{benefit}</span>
                   </li>
                 ))}
@@ -403,7 +403,7 @@ export const FipeQuotation: React.FC = () => {
             </div>
             
             <form onSubmit={handleFinalSubmit} className="w-full">
-              <button type="submit" disabled={isSubmitting} className="w-full py-4 px-6 rounded-xl text-lg font-bold bg-apvs-accent-500 hover:bg-apvs-accent-600 text-white transition-all shadow-lg hover:-translate-y-1">
+              <button type="submit" disabled={isSubmitting} className="relative overflow-hidden w-full py-4 px-6 rounded-xl text-lg font-bold bg-apvs-accent-500 hover:bg-apvs-accent-600 text-white transition-all shadow-lg hover:-translate-y-1 shine-effect">
                 {isSubmitting ? <Loader2 className="w-6 h-6 animate-spin mx-auto" /> : 'Quero essa proteção!'}
               </button>
             </form>
@@ -421,7 +421,7 @@ export const FipeQuotation: React.FC = () => {
           <div className="w-full md:w-5/12 bg-apvs-blue-50 dark:bg-gray-800/50 p-8 md:p-12 flex flex-col justify-center">
             <Reveal animation="slide-right">
               <div className="flex items-center gap-3 mb-6">
-                <Shield className="w-8 h-8 text-apvs-accent-500" />
+                <Shield className="w-8 h-8 text-apvs-accent-500 dark:text-amber-400" />
                 <h3 className="text-2xl font-bold text-apvs-blue-900 dark:text-white">Cotação Online FIPE</h3>
               </div>
               <p className="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
@@ -430,7 +430,7 @@ export const FipeQuotation: React.FC = () => {
               <ul className="space-y-4">
                 {['Cotação baseada na Tabela FIPE', 'Processo 100% online', 'Rápido e sem compromisso', 'Dados seguros e protegidos'].map((item, idx) => (
                   <li key={idx} className="flex items-center gap-3 text-gray-700 dark:text-gray-200 font-medium">
-                    <CheckCircle2 className="w-5 h-5 text-apvs-accent-500 flex-shrink-0" />
+                    <CheckCircle2 className="w-5 h-5 text-apvs-accent-500 dark:text-amber-400 flex-shrink-0" />
                     {item}
                   </li>
                 ))}
