@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ShieldCheck } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import logo from '@/assets/logo-apvs-gold.png';
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -34,17 +35,14 @@ export const Navbar: React.FC = () => {
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled || !isHomePage ? 'bg-white shadow-md py-3' : 'bg-transparent py-5'
+        isScrolled || !isHomePage ? 'bg-apvs-blue-900 shadow-md py-3' : 'bg-transparent py-5'
       }`}
     >
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
-            <ShieldCheck className="w-8 h-8 text-apvs-green-500" />
-            <span className={`text-2xl font-bold transition-colors ${isScrolled || !isHomePage ? 'text-apvs-blue-900' : 'text-white'}`}>
-              APVS <span className="text-apvs-green-500">Brasil</span>
-            </span>
+            <img src={logo} alt="APVS Brasil" className="h-12" />
           </Link>
 
           {/* Desktop Nav */}
@@ -54,9 +52,7 @@ export const Navbar: React.FC = () => {
                 <li key={link.name}>
                   <NavLink 
                     href={link.href} 
-                    className={`text-sm font-medium hover:text-apvs-green-500 transition-colors ${
-                      isScrolled || !isHomePage ? 'text-gray-700' : 'text-gray-200'
-                    }`}
+                    className="text-sm font-medium text-gray-200 hover:text-apvs-green-500 transition-colors"
                   >
                     {link.name}
                   </NavLink>
@@ -73,7 +69,7 @@ export const Navbar: React.FC = () => {
 
           {/* Mobile Menu Toggle */}
           <button 
-            className={`md:hidden p-2 rounded-md ${isScrolled || !isHomePage ? 'text-apvs-blue-900' : 'text-white'}`}
+            className="md:hidden p-2 rounded-md text-white"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
