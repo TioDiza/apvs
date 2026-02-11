@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getBrands, getModels, getYears, getVehicleInfo, Brand, Model, Year, VehicleInfo } from '@/services/fipeApi';
 import { calculateMonthlyFee, VehicleCategory } from '@/services/pricingData';
 import { Reveal } from '@/components/Reveal';
-import { Car, Bike, Truck, Shield, CheckCircle2, MapPin, Loader2, AlertCircle, RefreshCw } from 'lucide-react';
+import { Car, Bike, Truck, Shield, CheckCircle2, MapPin, Loader2, AlertCircle, RefreshCw, Signal, CalendarPlus, ShieldCheck } from 'lucide-react';
 
 type ApiVehicleType = 'cars' | 'motorcycles' | 'trucks';
 
@@ -295,6 +295,25 @@ export const FipeQuotation: React.FC = () => {
                 <p className="text-xs text-gray-500 mt-1">*Valor de referência, sujeito a alterações.</p>
               </div>
             </div>
+
+            <div className="text-left w-full space-y-3 mb-6">
+              <h5 className="font-bold text-lg text-gray-800">Vantagens da sua adesão:</h5>
+              <ul className="space-y-2 text-gray-600">
+                <li className="flex items-center gap-3">
+                  <Signal className="w-5 h-5 text-apvs-green-500 flex-shrink-0" />
+                  <span><strong>Rastreador já incluso</strong> na sua taxa de adesão.</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CalendarPlus className="w-5 h-5 text-apvs-green-500 flex-shrink-0" />
+                  <span>Pague a 1ª mensalidade só <strong>daqui a 30 dias</strong>.</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <ShieldCheck className="w-5 h-5 text-apvs-green-500 flex-shrink-0" />
+                  <span>Seu veículo <strong>protegido na hora</strong> após o pagamento.</span>
+                </li>
+              </ul>
+            </div>
+            
             <form onSubmit={handleFinalSubmit} className="w-full flex flex-col gap-4">
               <input type="text" placeholder="Seu nome completo" value={name} onChange={e => setName(e.target.value)} required className="block w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-apvs-blue-900" />
               <input type="tel" placeholder="Seu melhor telefone (WhatsApp)" value={phone} onChange={e => setPhone(e.target.value)} required className="block w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-apvs-blue-900" />
