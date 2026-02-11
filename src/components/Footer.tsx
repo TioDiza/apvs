@@ -26,9 +26,6 @@ export const Footer: React.FC = () => {
               <a href="https://www.facebook.com/share/185C9CEhvk/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-apvs-green-500 hover:text-white transition-colors">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-apvs-green-500 hover:text-white transition-colors">
-                <Youtube className="w-5 h-5" />
-              </a>
             </div>
           </div>
 
