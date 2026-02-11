@@ -1,4 +1,4 @@
-import React, inport { useState } from 'react';
+import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
 
