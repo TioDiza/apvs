@@ -44,7 +44,7 @@ export const Benefits: React.FC = () => {
             <Reveal>
               <h2 className="text-apvs-accent-500 font-bold tracking-wide uppercase text-sm mb-2">Vantagens</h2>
               <h3 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-6 leading-tight">
-                Por que escolher a <span className="text-apvs-blue-900">APVS Brasil?</span>
+                Por que escolher a <span className="text-apvs-blue-900 dark:text-amber-400">APVS Brasil?</span>
               </h3>
               <p className="text-gray-600 dark:text-gray-300 text-lg mb-8">
                 Oferecemos as melhores coberturas do mercado com um preço justo, garantindo a tranquilidade que você e sua família merecem.
