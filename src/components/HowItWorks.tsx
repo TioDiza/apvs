@@ -31,7 +31,7 @@ export const HowItWorks: React.FC = () => {
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <Reveal>
-            <h2 className="text-apvs-blue-900 font-bold tracking-wide uppercase text-sm mb-2">Processo Simples</h2>
+            <h2 className="text-amber-400 font-bold tracking-wide uppercase text-sm mb-2">Processo Simples</h2>
             <h3 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-4">Como funciona a APVS Brasil?</h3>
             <p className="text-gray-600 dark:text-gray-300 text-lg">Proteger o seu patrimônio nunca foi tão rápido e fácil. Sem análise de perfil e sem burocracia.</p>
           </Reveal>
