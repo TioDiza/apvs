@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { supabase } from '../integrations/supabase/client';
 import { useNavigate } from 'react-router-dom';
 import { Loader2, Trash2, LogOut, CheckCircle, RefreshCw } from 'lucide-react';
+import logo from '@/assets/logo-apvs-gold.png';
 
 interface Quotation {
   id: string;
@@ -84,7 +85,8 @@ export const DashboardPage: React.FC = () => {
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen py-32">
+    <div className="bg-gray-50 min-h-screen py-32 relative">
+      <img src={logo} alt="APVS Brasil Logo" className="absolute top-8 left-8 w-48" />
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="flex justify-between items-center mb-8">
           <div>

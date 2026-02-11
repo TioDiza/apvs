@@ -3,6 +3,7 @@ import { supabase } from '../integrations/supabase/client';
 import { useNavigate } from 'react-router-dom';
 import { Loader2 } from 'lucide-react';
 import '@/styles/login.css';
+import logo from '@/assets/logo-apvs-gold.png';
 
 export const LoginPage: React.FC = () => {
   const navigate = useNavigate();
@@ -33,7 +34,8 @@ export const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen flex items-center justify-center p-4">
+    <div className="bg-gray-50 min-h-screen flex items-center justify-center p-4 relative">
+      <img src={logo} alt="APVS Brasil Logo" className="absolute top-8 left-8 w-48" />
       <div className="card">
         <input
           checked={isPasswordVisible}
