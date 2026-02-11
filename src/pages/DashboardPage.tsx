@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Loader2, Trash2, LogOut, CheckCircle, RefreshCw } from 'lucide-react';
 import logo from '@/assets/logo-apvs-gold.png';
 import FallingParticles from '@/components/FallingParticles';
+import { useTheme } from '@/contexts/ThemeContext';
 
 interface Quotation {
   id: string;
@@ -26,6 +27,18 @@ export const DashboardPage: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
+  const { theme } = useTheme();
+
+  // Force dark theme on this page
+  useEffect(() => {
+    document.documentElement.classList.add('dark');
+    // On component unmount, revert to the original theme if it was light
+    return () => {
+      if (theme === 'light') {
+        document.documentElement.classList.remove('dark');
+      }
+    };
+  }, [theme]);
 
   const fetchQuotations = useCallback(async () => {
     setLoading(true);

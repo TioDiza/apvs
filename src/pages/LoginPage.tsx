@@ -5,6 +5,7 @@ import { Loader2 } from 'lucide-react';
 import '@/styles/login.css';
 import logo from '@/assets/logo-apvs-gold.png';
 import FallingParticles from '@/components/FallingParticles';
+import { useTheme } from '@/contexts/ThemeContext';
 
 export const LoginPage: React.FC = () => {
   const navigate = useNavigate();
@@ -13,6 +14,18 @@ export const LoginPage: React.FC = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const { theme } = useTheme();
+
+  // Force dark theme on this page
+  useEffect(() => {
+    document.documentElement.classList.add('dark');
+    // On component unmount, revert to the original theme if it was light
+    return () => {
+      if (theme === 'light') {
+        document.documentElement.classList.remove('dark');
+      }
+    };
+  }, [theme]);
 
   useEffect(() => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
