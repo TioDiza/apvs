@@ -66,6 +66,7 @@ export const FipeQuotation: React.FC = () => {
   const [vehicleInfo, setVehicleInfo] = useState<VehicleInfo | null>(null);
   const [monthlyFee, setMonthlyFee] = useState<number | null>(null);
   const [adhesionFee, setAdhesionFee] = useState<number | null>(null);
+  const [showTrackerBenefit, setShowTrackerBenefit] = useState(true);
   
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -73,6 +74,11 @@ export const FipeQuotation: React.FC = () => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const parseFipeValue = (fipeString: string): number => {
+    if (!fipeString) return 0;
+    return parseFloat(fipeString.replace('R$ ', '').replace(/\./g, '').replace(',', '.'));
+  };
 
   const reset = () => {
     setStep(1);
@@ -88,6 +94,7 @@ export const FipeQuotation: React.FC = () => {
     setVehicleInfo(null);
     setMonthlyFee(null);
     setAdhesionFee(null);
+    setShowTrackerBenefit(true);
     setError(null);
   };
 
@@ -166,6 +173,9 @@ export const FipeQuotation: React.FC = () => {
       try {
         const data = await getVehicleInfo(apiVehicleType, selectedBrand, selectedModel, selectedYear);
         setVehicleInfo(data);
+
+        const fipeValue = parseFipeValue(data.price);
+        setShowTrackerBenefit(fipeValue >= 31000);
 
         let category: VehicleCategory = 'motorcycle';
         if (apiVehicleType === 'cars') category = carCategory;
@@ -299,10 +309,12 @@ export const FipeQuotation: React.FC = () => {
             <div className="text-left w-full space-y-3 mb-6 bg-apvs-blue-50 p-4 rounded-lg border-l-4 border-apvs-green-500">
               <h5 className="font-bold text-lg text-gray-800 mb-3">Vantagens da sua adesão:</h5>
               <ul className="space-y-2 text-gray-700">
-                <li className="flex items-start gap-3">
-                  <Signal className="w-5 h-5 text-apvs-green-500 flex-shrink-0 mt-1" />
-                  <p><span className="font-bold text-apvs-blue-900">Rastreador já incluso</span> na sua taxa de adesão.</p>
-                </li>
+                {showTrackerBenefit && (
+                  <li className="flex items-start gap-3">
+                    <Signal className="w-5 h-5 text-apvs-green-500 flex-shrink-0 mt-1" />
+                    <p><span className="font-bold text-apvs-blue-900">Rastreador já incluso</span> na sua taxa de adesão.</p>
+                  </li>
+                )}
                 <li className="flex items-start gap-3">
                   <CalendarPlus className="w-5 h-5 text-apvs-green-500 flex-shrink-0 mt-1" />
                   <p>Pague a 1ª mensalidade só <span className="font-bold text-apvs-blue-900">daqui a 30 dias</span>.</p>
