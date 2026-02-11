@@ -65,6 +65,7 @@ export const FipeQuotation: React.FC = () => {
   
   const [vehicleInfo, setVehicleInfo] = useState<VehicleInfo | null>(null);
   const [monthlyFee, setMonthlyFee] = useState<number | null>(null);
+  const [adhesionFee, setAdhesionFee] = useState<number | null>(null);
   
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -86,6 +87,7 @@ export const FipeQuotation: React.FC = () => {
     setSelectedYear('');
     setVehicleInfo(null);
     setMonthlyFee(null);
+    setAdhesionFee(null);
     setError(null);
   };
 
@@ -171,6 +173,17 @@ export const FipeQuotation: React.FC = () => {
 
         const fee = calculateMonthlyFee(selectedState, category, data.price);
         setMonthlyFee(fee);
+
+        if (fee) {
+          let calculatedAdhesionFee = fee - (fee * 0.10);
+          if (calculatedAdhesionFee < 200) {
+            calculatedAdhesionFee = 200;
+          }
+          setAdhesionFee(calculatedAdhesionFee);
+        } else {
+          setAdhesionFee(null);
+        }
+
         setStep(5);
       } catch (err) {
         setError('Não foi possível carregar os detalhes do veículo.');
@@ -268,6 +281,9 @@ export const FipeQuotation: React.FC = () => {
             <div className="text-left bg-apvs-blue-50 p-6 rounded-xl border border-apvs-blue-200 mb-6 w-full space-y-2">
               <p><strong>Veículo:</strong> {vehicleInfo?.model}</p>
               <p><strong>Valor FIPE:</strong> <span className="font-bold">{vehicleInfo?.price}</span></p>
+              {adhesionFee && (
+                <p><strong>Taxa de Adesão:</strong> <span className="font-bold">R$ {adhesionFee.toFixed(2).replace('.', ',')}</span></p>
+              )}
               <div className="pt-2 mt-2 border-t border-apvs-blue-200">
                 {monthlyFee ? (
                   <p className="text-2xl font-bold text-apvs-green-600">
