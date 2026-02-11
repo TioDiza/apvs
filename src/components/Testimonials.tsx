@@ -32,7 +32,7 @@ export const Testimonials: React.FC = () => {
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <Reveal>
-            <h2 className="text-apvs-blue-900 font-bold tracking-wide uppercase text-sm mb-2">Depoimentos</h2>
+            <h2 className="text-apvs-blue-900 dark:text-amber-400 font-bold tracking-wide uppercase text-sm mb-2">Depoimentos</h2>
             <h3 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-4">A voz de quem confia na APVS</h3>
             <p className="text-gray-600 dark:text-gray-300 text-lg">Não acredite apenas em nós. Veja o que nossos associados têm a dizer sobre nossas entregas.</p>
           </Reveal>
@@ -44,7 +44,7 @@ export const Testimonials: React.FC = () => {
               <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300 relative h-full flex flex-col">
                 <Quote className="absolute top-6 right-6 w-10 h-10 text-blue-100 dark:text-apvs-accent-500/20" />
                 
-                <div className="flex text-apvs-accent-500 mb-6">
+                <div className="flex text-apvs-accent-500 dark:text-amber-400 mb-6">
                   {[...Array(item.rating)].map((_, i) => (
                     <Star key={i} className="w-5 h-5 fill-current" />
                   ))}
