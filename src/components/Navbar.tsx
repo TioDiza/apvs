@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
-import logo from '@/assets/logo-apvs-gold.png';
+import { Menu, X, ShieldCheck } from 'lucide-react';
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -42,7 +41,10 @@ export const Navbar: React.FC = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
-            <img src={logo} alt="APVS Brasil Logo" className="h-12" />
+            <ShieldCheck className="w-8 h-8 text-apvs-green-500" />
+            <span className={`text-2xl font-bold transition-colors ${isScrolled || !isHomePage ? 'text-apvs-blue-900' : 'text-white'}`}>
+              APVS <span className="text-apvs-green-500">Brasil</span>
+            </span>
           </Link>
 
           {/* Desktop Nav */}

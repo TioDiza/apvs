@@ -85,9 +85,11 @@ export const DashboardPage: React.FC = () => {
   };
 
   return (
-    <div className="bg-gradient-to-br from-apvs-blue-800 to-apvs-blue-900 min-h-screen py-32 relative">
-      <img src={logo} alt="APVS Brasil Logo" className="absolute top-8 left-8 w-48" />
+    <div className="bg-gradient-to-br from-apvs-blue-800 to-apvs-blue-900 min-h-screen py-16 md:py-24">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
+        <div className="flex justify-center mb-8">
+          <img src={logo} alt="APVS Brasil Logo" className="w-48" />
+        </div>
         <div className="flex justify-between items-center mb-8">
           <div>
             <h1 className="text-4xl font-extrabold text-white">Dashboard de Cotações</h1>
