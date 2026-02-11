@@ -17,7 +17,7 @@ export const FinalCTA: React.FC = () => {
             <ShieldCheck className="w-10 h-10 text-apvs-green-500" />
           </div>
           <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
-            Não deixe seu patrimônio <br className="hidden md:block"/> desprotecido.
+            Não deixe seu patrimônio <br className="hidden md:block"/> desprotegido.
           </h2>
           <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
             Faça sua cotação gratuita agora mesmo e junte-se à maior associação de proteção veicular da América Latina.
