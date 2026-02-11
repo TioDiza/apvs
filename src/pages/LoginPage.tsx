@@ -28,6 +28,8 @@ export const LoginPage: React.FC = () => {
             appearance={{ theme: ThemeSupa }}
             providers={[]}
             theme="light"
+            view="sign_in"
+            showLinks={false}
             localization={{
               variables: {
                 sign_in: {
@@ -37,17 +39,6 @@ export const LoginPage: React.FC = () => {
                   loading_button_label: 'Entrando...',
                   social_provider_text: 'Entrar com {{provider}}',
                 },
-                sign_up: {
-                    email_label: 'Seu email',
-                    password_label: 'Sua senha',
-                    button_label: 'Registrar',
-                    loading_button_label: 'Registrando...',
-                },
-                forgotten_password: {
-                    email_label: 'Seu email',
-                    button_label: 'Enviar instruções',
-                    loading_button_label: 'Enviando...',
-                }
               },
             }}
           />
