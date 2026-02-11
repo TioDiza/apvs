@@ -1,8 +1,57 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Reveal } from '@/components/Reveal';
 import heroBg from '@/assets/hero-background-v2.png';
 
 export const HeroSection: React.FC = () => {
+  const words = [
+    'Integral',
+    'Absoluta',
+    'Premium',
+    'Avançada',
+    'Exclusiva',
+    'Blindada',
+    'Elite',
+    'Prime',
+    'Completa',
+  ];
+  const [wordIndex, setWordIndex] = useState(0);
+  const [text, setText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const typingSpeed = 150;
+    const deletingSpeed = 75;
+    const pauseDuration = 1500;
+
+    const handleTyping = () => {
+      const currentWord = words[wordIndex % words.length];
+      
+      if (isDeleting) {
+        setText(currentWord.substring(0, text.length - 1));
+      } else {
+        setText(currentWord.substring(0, text.length + 1));
+      }
+
+      // Logic to switch between typing, deleting, and changing words
+      if (!isDeleting && text === currentWord) {
+        // If it's the last word ("Completa"), stop the animation.
+        if (wordIndex === words.length - 1) {
+          return; 
+        }
+        // Pause at the end of a word, then start deleting
+        setTimeout(() => setIsDeleting(true), pauseDuration);
+      } else if (isDeleting && text === '') {
+        setIsDeleting(false);
+        setWordIndex((prev) => prev + 1);
+      }
+    };
+
+    const speed = isDeleting ? deletingSpeed : typingSpeed;
+    const timer = setTimeout(handleTyping, speed);
+
+    return () => clearTimeout(timer);
+  }, [text, isDeleting, wordIndex]);
+
   return (
     <section id="inicio" className="relative min-h-[90vh] flex items-center justify-center pt-20 overflow-hidden">
       {/* Background Image with Overlay */}
@@ -26,7 +75,15 @@ export const HeroSection: React.FC = () => {
           <Reveal animation="fade-up" delay={300}>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
               Proteção Veicular <br />
-              <span className="text-apvs-green-500">Completa</span> para o<br />
+              <span className="relative text-apvs-green-500">
+                {/* Invisible placeholder for the longest word to prevent layout shift */}
+                <span className="opacity-0">Exclusiva</span>
+                {/* The actual animated text */}
+                <span className="absolute left-0 top-0">
+                  {text}
+                  <span className="animate-pulse opacity-75">|</span>
+                </span>
+              </span> para o<br />
               Seu Veículo
             </h1>
           </Reveal>
