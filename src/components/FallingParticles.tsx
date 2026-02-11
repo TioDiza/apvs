@@ -6,8 +6,8 @@ const FallingParticles: React.FC = () => {
   const particles = Array.from({ length: particleCount }).map((_, i) => {
     const style = {
       left: `${Math.random() * 100}%`,
-      width: `${Math.random() * 2 + 1}px`,
-      height: `${Math.random() * 2 + 1}px`,
+      width: `${Math.random() * 3 + 2}px`, // Aumentado de 1-3px para 2-5px
+      height: `${Math.random() * 3 + 2}px`, // Aumentado de 1-3px para 2-5px
       animationDuration: `${Math.random() * 5 + 8}s`, // 8s to 13s duration
       animationDelay: `${Math.random() * 10}s`, // 0s to 10s delay
     };
