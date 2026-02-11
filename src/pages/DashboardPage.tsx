@@ -87,7 +87,10 @@ export const DashboardPage: React.FC = () => {
     <div className="bg-gray-50 min-h-screen py-32">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-4xl font-extrabold text-apvs-blue-900">Dashboard de Cotações</h1>
+          <div>
+            <h1 className="text-4xl font-extrabold text-apvs-blue-900">Dashboard de Cotações</h1>
+            <p className="text-gray-500 mt-1">Lista de Leads que fizeram cotação APVS - BRASIL</p>
+          </div>
           <div className="flex items-center gap-4">
             <button
               onClick={fetchQuotations}
