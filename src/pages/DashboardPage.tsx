@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../integrations/supabase/client';
 import { useNavigate } from 'react-router-dom';
-import { Loader2, Trash2, LogOut } from 'lucide-react';
+import { Loader2, Trash2, LogOut, CheckCircle } from 'lucide-react';
 
 interface Quotation {
   id: string;
@@ -16,6 +16,7 @@ interface Quotation {
   monthly_fee: number;
   adhesion_fee: number;
   state: string;
+  contacted: boolean;
 }
 
 export const DashboardPage: React.FC = () => {
@@ -59,6 +60,22 @@ export const DashboardPage: React.FC = () => {
     }
   };
 
+  const handleToggleContacted = async (id: string, currentStatus: boolean) => {
+    const { data, error } = await supabase
+      .from('quotations')
+      .update({ contacted: !currentStatus })
+      .eq('id', id)
+      .select()
+      .single();
+
+    if (error) {
+      alert('Erro ao atualizar o status do contato.');
+      console.error(error);
+    } else if (data) {
+      setQuotations(quotations.map(q => (q.id === id ? data as Quotation : q)));
+    }
+  };
+
   return (
     <div className="bg-gray-50 min-h-screen py-32">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
@@ -91,22 +108,35 @@ export const DashboardPage: React.FC = () => {
                   <th scope="col" className="px-6 py-3">Telefone</th>
                   <th scope="col" className="px-6 py-3">Veículo</th>
                   <th scope="col" className="px-6 py-3">Valor FIPE</th>
+                  <th scope="col" className="px-6 py-3">Adesão</th>
                   <th scope="col" className="px-6 py-3">Mensalidade</th>
                   <th scope="col" className="px-6 py-3">Ações</th>
                 </tr>
               </thead>
               <tbody>
                 {quotations.map(q => (
-                  <tr key={q.id} className="bg-white border-b hover:bg-gray-50">
+                  <tr key={q.id} className={`border-b transition-colors ${q.contacted ? 'bg-green-50 hover:bg-green-100' : 'bg-white hover:bg-gray-50'}`}>
                     <td className="px-6 py-4">{new Date(q.created_at).toLocaleString('pt-BR')}</td>
                     <td className="px-6 py-4 font-medium text-gray-900">{q.name}</td>
                     <td className="px-6 py-4">{q.phone}</td>
                     <td className="px-6 py-4">{q.vehicle_model} {q.vehicle_year}</td>
                     <td className="px-6 py-4">{q.vehicle_fipe_value}</td>
+                    <td className="px-6 py-4 font-bold text-apvs-blue-900">R$ {q.adhesion_fee?.toFixed(2).replace('.', ',')}</td>
                     <td className="px-6 py-4 font-bold text-apvs-green-600">R$ {q.monthly_fee?.toFixed(2).replace('.', ',')}</td>
-                    <td className="px-6 py-4">
-                      <button onClick={() => handleDelete(q.id)} className="text-red-600 hover:text-red-800">
-                        <Trash2 className="w-4 h-4" />
+                    <td className="px-6 py-4 flex items-center">
+                      <button 
+                        onClick={() => handleToggleContacted(q.id, q.contacted)} 
+                        className={`p-1 rounded-full transition-colors ${q.contacted ? 'text-green-600' : 'text-gray-400 hover:text-green-500'}`} 
+                        title={q.contacted ? 'Marcar como não contatado' : 'Marcar como contatado'}
+                      >
+                        <CheckCircle className="w-5 h-5" />
+                      </button>
+                      <button 
+                        onClick={() => handleDelete(q.id)} 
+                        className="text-red-600 hover:text-red-800 p-1 ml-2" 
+                        title="Excluir cotação"
+                      >
+                        <Trash2 className="w-5 h-5" />
                       </button>
                     </td>
                   </tr>
