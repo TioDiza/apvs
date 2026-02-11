@@ -75,7 +75,7 @@ export const HeroSection: React.FC = () => {
           <Reveal animation="fade-up" delay={300}>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
               Proteção Veicular <br />
-              <span className="relative text-apvs-green-500">
+              <span className="relative text-amber-400">
                 {/* Invisible placeholder for the longest word to prevent layout shift */}
                 <span className="opacity-0">Exclusiva</span>
                 {/* The actual animated text */}
