@@ -1,4 +1,4 @@
--- Cria a tabela 'quotations' para armazenar os dados do formulário.
+-- Create quotations table
 CREATE TABLE public.quotations (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
@@ -14,22 +14,22 @@ CREATE TABLE public.quotations (
   adhesion_fee NUMERIC
 );
 
--- Habilita a Segurança a Nível de Linha (RLS) para proteger os dados.
+-- Enable RLS (REQUIRED for security)
 ALTER TABLE public.quotations ENABLE ROW LEVEL SECURITY;
 
--- Política de Segurança: Permite que qualquer pessoa (anônima) insira uma nova cotação.
--- Isso é necessário porque o formulário é público no site.
+-- Create policies
+-- Allow anonymous users to create new quotations (from the public form)
 CREATE POLICY "Allow anonymous inserts" ON public.quotations
-FOR INSERT WITH CHECK (true);
+FOR INSERT TO anon WITH CHECK (true);
 
--- Política de Segurança: Permite que usuários autenticados (admins) leiam todas as cotações.
-CREATE POLICY "Allow admin read access" ON public.quotations
+-- Allow authenticated users (admins) to view all quotations
+CREATE POLICY "Allow authenticated users to select" ON public.quotations
 FOR SELECT TO authenticated USING (true);
 
--- Política de Segurança: Permite que usuários autenticados (admins) atualizem cotações.
-CREATE POLICY "Allow admin update access" ON public.quotations
-FOR UPDATE TO authenticated USING (true);
-
--- Política de Segurança: Permite que usuários autenticados (admins) excluam cotações.
-CREATE POLICY "Allow admin delete access" ON public.quotations
+-- Allow authenticated users (admins) to delete quotations
+CREATE POLICY "Allow authenticated users to delete" ON public.quotations
 FOR DELETE TO authenticated USING (true);
+
+-- Allow authenticated users (admins) to update quotations (good practice to have it)
+CREATE POLICY "Allow authenticated users to update" ON public.quotations
+FOR UPDATE TO authenticated USING (true);
