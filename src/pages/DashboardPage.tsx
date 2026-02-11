@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { supabase } from '../integrations/supabase/client';
 import { useNavigate } from 'react-router-dom';
-import { Loader2, Trash2, LogOut, CheckCircle } from 'lucide-react';
+import { Loader2, Trash2, LogOut, CheckCircle, RefreshCw } from 'lucide-react';
 
 interface Quotation {
   id: string;
@@ -25,24 +25,26 @@ export const DashboardPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchQuotations = async () => {
-      const { data, error } = await supabase
-        .from('quotations')
-        .select('*')
-        .order('created_at', { ascending: false });
+  const fetchQuotations = useCallback(async () => {
+    setLoading(true);
+    const { data, error } = await supabase
+      .from('quotations')
+      .select('*')
+      .order('created_at', { ascending: false });
 
-      if (error) {
-        setError('Falha ao buscar cotações.');
-        console.error(error);
-      } else {
-        setQuotations(data as Quotation[]);
-      }
-      setLoading(false);
-    };
-
-    fetchQuotations();
+    if (error) {
+      setError('Falha ao buscar cotações.');
+      console.error(error);
+    } else {
+      setQuotations(data as Quotation[]);
+      setError(null);
+    }
+    setLoading(false);
   }, []);
+
+  useEffect(() => {
+    fetchQuotations();
+  }, [fetchQuotations]);
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
@@ -64,19 +66,16 @@ export const DashboardPage: React.FC = () => {
     const newStatus = !currentStatus;
     const originalQuotations = quotations;
 
-    // Atualização otimista da UI
     const updatedQuotations = quotations.map(q =>
       q.id === id ? { ...q, contacted: newStatus } : q
     );
     setQuotations(updatedQuotations);
 
-    // Tenta atualizar no banco de dados
     const { error } = await supabase
       .from('quotations')
       .update({ contacted: newStatus })
       .eq('id', id);
 
-    // Se der erro, reverte a alteração na UI e avisa o usuário
     if (error) {
       alert('Erro ao atualizar o status do contato.');
       console.error(error);
@@ -89,13 +88,22 @@ export const DashboardPage: React.FC = () => {
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-4xl font-extrabold text-apvs-blue-900">Dashboard de Cotações</h1>
-          <button
-            onClick={handleLogout}
-            className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-bold transition-colors flex items-center gap-2"
-          >
-            <LogOut className="w-5 h-5" />
-            Sair
-          </button>
+          <div className="flex items-center gap-4">
+            <button
+              onClick={fetchQuotations}
+              className="bg-apvs-blue-900 hover:bg-apvs-blue-800 text-white px-4 py-2 rounded-lg font-bold transition-colors flex items-center gap-2"
+            >
+              <RefreshCw className="w-5 h-5" />
+              Atualizar
+            </button>
+            <button
+              onClick={handleLogout}
+              className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-bold transition-colors flex items-center gap-2"
+            >
+              <LogOut className="w-5 h-5" />
+              Sair
+            </button>
+          </div>
         </div>
 
         <div className="bg-white p-6 rounded-2xl shadow-xl overflow-x-auto">
