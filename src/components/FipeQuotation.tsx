@@ -162,25 +162,23 @@ export const FipeQuotation: React.FC = () => {
 
   useEffect(() => {
     if (!selectedModel) return;
-    setStep(4); // Go to name/phone form
+    const fetchYears = async () => {
+      setIsLoading(true);
+      setError(null);
+      setYears([]);
+      setSelectedYear('');
+      try {
+        const data = await getYears(apiVehicleType, selectedBrand, selectedModel);
+        setYears(data);
+        setStep(4);
+      } catch (err) {
+        setError('Não foi possível carregar os anos. Tente novamente.');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchYears();
   }, [selectedModel]);
-
-  const handleProceedToYearSelection = async () => {
-    if (!name || !phone) return;
-    setIsLoading(true);
-    setError(null);
-    setYears([]);
-    setSelectedYear('');
-    try {
-      const data = await getYears(apiVehicleType, selectedBrand, selectedModel);
-      setYears(data);
-      setStep(5); // Go to year selection
-    } catch (err) {
-      setError('Não foi possível carregar os anos. Tente novamente.');
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   useEffect(() => {
     if (!selectedYear) return;
@@ -211,7 +209,7 @@ export const FipeQuotation: React.FC = () => {
           setAdhesionFee(null);
         }
 
-        setStep(6); // Go to results
+        setStep(5);
       } catch (err) {
         setError('Não foi possível carregar os detalhes do veículo.');
       } finally {
@@ -221,8 +219,8 @@ export const FipeQuotation: React.FC = () => {
     fetchVehicleInfo();
   }, [selectedYear]);
 
-  const handleFinalSubmit = (e?: React.FormEvent) => {
-    if (e) e.preventDefault();
+  const handleFinalSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
     setIsSubmitting(true);
     setTimeout(() => {
       alert(`Cotação para ${name} (${phone}) enviada com sucesso! Entraremos em contato.`);
@@ -293,29 +291,6 @@ export const FipeQuotation: React.FC = () => {
       case 4:
         return (
           <>
-            <h4 className="text-3xl font-extrabold text-gray-900 mb-2">Quase lá!</h4>
-            <p className="text-gray-500 mb-6">Preencha seus dados para ver o valor da sua proteção.</p>
-            <form onSubmit={(e) => { e.preventDefault(); handleProceedToYearSelection(); }} className="w-full flex flex-col gap-4">
-              <input type="text" placeholder="Seu nome completo" value={name} onChange={e => setName(e.target.value)} required className="block w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-apvs-blue-900" />
-              <input 
-                type="tel" 
-                placeholder="Seu melhor telefone (WhatsApp)" 
-                value={phone} 
-                onChange={e => setPhone(formatPhone(e.target.value))} 
-                maxLength={15}
-                required 
-                className="block w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-apvs-blue-900" 
-              />
-              <p className="text-sm text-gray-500 mt-2">Veja a cotação agora após preencher os dados.</p>
-              <button type="submit" disabled={!name || !phone} className="w-full py-3 px-6 rounded-xl text-lg font-bold bg-apvs-green-500 hover:bg-apvs-green-600 text-white transition-all shadow-lg hover:-translate-y-1 disabled:bg-gray-400 disabled:cursor-not-allowed">
-                Ver Cotação
-              </button>
-            </form>
-          </>
-        );
-      case 5:
-        return (
-          <>
             <h4 className="text-3xl font-extrabold text-gray-900 mb-8">Selecione o Ano</h4>
             <StyledSelect label="Ano" value={selectedYear} onChange={(e) => setSelectedYear(e.target.value)}>
               <option value="" disabled>-- Escolha o ano --</option>
@@ -323,11 +298,11 @@ export const FipeQuotation: React.FC = () => {
             </StyledSelect>
           </>
         );
-      case 6:
+      case 5:
         return (
           <>
             <h4 className="text-3xl font-extrabold text-gray-900 mb-2">Resultado da Cotação</h4>
-            <p className="text-gray-500 mb-6">Confira os valores e finalize para receber o contato de um consultor.</p>
+            <p className="text-gray-500 mb-6">Confira os valores e preencha seus dados para concluir.</p>
             <div className="text-left bg-apvs-blue-50 p-6 rounded-xl border border-apvs-blue-200 mb-6 w-full space-y-2">
               <p><strong>Veículo:</strong> {vehicleInfo?.model}</p>
               <p><strong>Valor FIPE:</strong> <span className="font-bold">{vehicleInfo?.price}</span></p>
@@ -366,11 +341,21 @@ export const FipeQuotation: React.FC = () => {
               </ul>
             </div>
             
-            <div className="w-full">
-              <button onClick={() => handleFinalSubmit()} disabled={isSubmitting} className="w-full py-4 px-6 rounded-xl text-lg font-bold bg-apvs-green-500 hover:bg-apvs-green-600 text-white transition-all shadow-lg hover:-translate-y-1">
+            <form onSubmit={handleFinalSubmit} className="w-full flex flex-col gap-4">
+              <input type="text" placeholder="Seu nome completo" value={name} onChange={e => setName(e.target.value)} required className="block w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-apvs-blue-900" />
+              <input 
+                type="tel" 
+                placeholder="Seu melhor telefone (WhatsApp)" 
+                value={phone} 
+                onChange={e => setPhone(formatPhone(e.target.value))} 
+                maxLength={15}
+                required 
+                className="block w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-apvs-blue-900" 
+              />
+              <button type="submit" disabled={isSubmitting} className="w-full py-4 px-6 rounded-xl text-lg font-bold bg-apvs-green-500 hover:bg-apvs-green-600 text-white transition-all shadow-lg hover:-translate-y-1">
                 {isSubmitting ? <Loader2 className="w-6 h-6 animate-spin mx-auto" /> : 'Quero essa proteção!'}
               </button>
-            </div>
+            </form>
           </>
         );
       default:
