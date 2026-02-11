@@ -291,6 +291,10 @@ export const FipeQuotation: React.FC = () => {
     setSelectedYear('');
   };
 
+  const handleChangeYear = () => {
+    setSelectedYear('');
+  };
+
   const renderStep = () => {
     if (error) {
       return <div className="flex flex-col items-center justify-center h-64 text-center"><AlertCircle className="w-12 h-12 text-red-500" /><p className="mt-4 text-lg font-semibold text-red-600">{error}</p><button onClick={reset} className="mt-4 bg-apvs-blue-900 text-white px-4 py-2 rounded-lg flex items-center gap-2"><RefreshCw className="w-4 h-4" /> Tentar Novamente</button></div>;
@@ -348,6 +352,9 @@ export const FipeQuotation: React.FC = () => {
 
             {selectedModel && !selectedYear && (
               <SearchableSelect label="Ano" placeholder="Selecione o ano" options={years} onSelect={setSelectedYear} disabled={isLoading || years.length === 0} />
+            )}
+            {selectedYear && (
+              <SelectedInfo label="Ano" value={years.find(y => y.code === selectedYear)?.name || ''} onChangeClick={handleChangeYear} />
             )}
             
             {selectedYear && (
