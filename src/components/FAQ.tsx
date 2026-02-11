@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, inport { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
 
@@ -37,7 +37,7 @@ export const FAQ: React.FC = () => {
       <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-4xl">
         <div className="text-center mb-16">
           <Reveal>
-            <h2 className="text-apvs-blue-900 font-bold tracking-wide uppercase text-sm mb-2">Tire suas dúvidas</h2>
+            <h2 className="text-apvs-blue-900 dark:text-amber-400 font-bold tracking-wide uppercase text-sm mb-2">Tire suas dúvidas</h2>
             <h3 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white">Perguntas Frequentes</h3>
           </Reveal>
         </div>
