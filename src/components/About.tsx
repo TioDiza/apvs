@@ -61,7 +61,7 @@ export const About: React.FC = () => {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-gray-100 dark:border-gray-700">
                 {stats.map((stat, index) => (
                   <div key={index} className="flex flex-col items-start">
-                    <stat.icon className="w-8 h-8 text-apvs-blue-900 dark:text-apvs-accent-500 mb-3" />
+                    <stat.icon className="w-8 h-8 text-apvs-blue-900 dark:text-amber-400 mb-3" />
                     <span className="text-2xl font-extrabold text-apvs-blue-900 dark:text-white">
                       <Counter end={stat.end} />
                       {stat.suffix}
