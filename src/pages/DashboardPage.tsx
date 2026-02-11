@@ -85,23 +85,23 @@ export const DashboardPage: React.FC = () => {
   };
 
   return (
-    <div className="bg-gradient-to-br from-apvs-blue-800 to-apvs-blue-900 min-h-screen py-16 md:py-24">
+    <div className="bg-gray-100 dark:bg-apvs-blue-900 min-h-screen py-16 md:py-24">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="flex justify-center mb-8">
           <img src={logo} alt="APVS Brasil Logo" className="w-48" />
         </div>
         <div className="text-center mb-8">
-          <p className="text-xl text-blue-200">Bem Vindo Corretor de Seguros Gabriel Ferreira Siqueira Andrade</p>
+          <p className="text-xl text-gray-600 dark:text-blue-200">Bem Vindo Corretor de Seguros Gabriel Ferreira Siqueira Andrade</p>
         </div>
         <div className="flex justify-between items-center mb-8">
           <div>
-            <h1 className="text-4xl font-extrabold text-white">Dashboard de Cotações</h1>
-            <p className="text-blue-200 mt-1">Lista de Leads que fizeram cotação APVS - BRASIL</p>
+            <h1 className="text-4xl font-extrabold text-gray-900 dark:text-white">Dashboard de Cotações</h1>
+            <p className="text-gray-600 dark:text-blue-200 mt-1">Lista de Leads que fizeram cotação APVS - BRASIL</p>
           </div>
           <div className="flex items-center gap-4">
             <button
               onClick={fetchQuotations}
-              className="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white px-4 py-2 rounded-lg font-bold transition-colors flex items-center gap-2"
+              className="bg-gray-200 dark:bg-white/10 hover:bg-gray-300 dark:hover:bg-white/20 backdrop-blur-md text-gray-800 dark:text-white px-4 py-2 rounded-lg font-bold transition-colors flex items-center gap-2"
             >
               <RefreshCw className="w-5 h-5" />
               Atualizar
@@ -116,7 +116,7 @@ export const DashboardPage: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-2xl shadow-xl overflow-x-auto">
+        <div className="bg-white dark:bg-gray-800/50 p-6 rounded-2xl shadow-xl overflow-x-auto">
           {loading ? (
             <div className="flex justify-center items-center p-12">
               <Loader2 className="w-10 h-10 animate-spin text-apvs-blue-900" />
@@ -124,10 +124,10 @@ export const DashboardPage: React.FC = () => {
           ) : error ? (
             <p className="text-red-500 text-center">{error}</p>
           ) : quotations.length === 0 ? (
-            <p className="text-gray-500 text-center p-8">Nenhuma cotação encontrada.</p>
+            <p className="text-gray-500 dark:text-gray-400 text-center p-8">Nenhuma cotação encontrada.</p>
           ) : (
-            <table className="w-full text-sm text-left text-gray-500">
-              <thead className="text-xs text-gray-700 uppercase bg-gray-100">
+            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+              <thead className="text-xs text-gray-700 dark:text-gray-300 uppercase bg-gray-100 dark:bg-gray-700/50">
                 <tr>
                   <th scope="col" className="px-6 py-3">Data</th>
                   <th scope="col" className="px-6 py-3">Nome</th>
@@ -141,13 +141,13 @@ export const DashboardPage: React.FC = () => {
               </thead>
               <tbody>
                 {quotations.map(q => (
-                  <tr key={q.id} className={`border-b transition-colors ${q.contacted ? 'bg-green-50 hover:bg-green-100' : 'bg-white hover:bg-gray-50'}`}>
+                  <tr key={q.id} className={`border-b dark:border-gray-700 transition-colors ${q.contacted ? 'bg-green-50 dark:bg-green-900/20 hover:bg-green-100 dark:hover:bg-green-900/30' : 'bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700/50'}`}>
                     <td className="px-6 py-4">{new Date(q.created_at).toLocaleString('pt-BR')}</td>
-                    <td className="px-6 py-4 font-medium text-gray-900">{q.name}</td>
+                    <td className="px-6 py-4 font-medium text-gray-900 dark:text-white">{q.name}</td>
                     <td className="px-6 py-4">{q.phone}</td>
                     <td className="px-6 py-4">{q.vehicle_model} {q.vehicle_year}</td>
                     <td className="px-6 py-4">{q.vehicle_fipe_value}</td>
-                    <td className="px-6 py-4 font-bold text-apvs-blue-900">R$ {q.adhesion_fee?.toFixed(2).replace('.', ',')}</td>
+                    <td className="px-6 py-4 font-bold text-apvs-blue-900 dark:text-blue-300">R$ {q.adhesion_fee?.toFixed(2).replace('.', ',')}</td>
                     <td className="px-6 py-4 font-bold text-apvs-green-600">R$ {q.monthly_fee?.toFixed(2).replace('.', ',')}</td>
                     <td className="px-6 py-4 flex items-center">
                       <button 

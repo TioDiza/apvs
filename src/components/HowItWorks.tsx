@@ -27,31 +27,31 @@ const steps = [
 
 export const HowItWorks: React.FC = () => {
   return (
-    <section id="como-funciona" className="py-24 bg-white">
+    <section id="como-funciona" className="py-24 bg-white dark:bg-black">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <Reveal>
             <h2 className="text-apvs-blue-900 font-bold tracking-wide uppercase text-sm mb-2">Processo Simples</h2>
-            <h3 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">Como funciona a APVS Brasil?</h3>
-            <p className="text-gray-600 text-lg">Proteger o seu patrimônio nunca foi tão rápido e fácil. Sem análise de perfil e sem burocracia.</p>
+            <h3 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-4">Como funciona a APVS Brasil?</h3>
+            <p className="text-gray-600 dark:text-gray-300 text-lg">Proteger o seu patrimônio nunca foi tão rápido e fácil. Sem análise de perfil e sem burocracia.</p>
           </Reveal>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
           {/* Connecting line for desktop */}
-          <div className="hidden lg:block absolute top-12 left-[10%] right-[10%] h-0.5 bg-gray-200 z-0"></div>
+          <div className="hidden lg:block absolute top-12 left-[10%] right-[10%] h-0.5 bg-gray-200 dark:bg-gray-700 z-0"></div>
 
           {steps.map((step, index) => (
             <Reveal key={index} delay={index * 200} className="relative z-10">
               <div className="flex flex-col items-center text-center group">
-                <div className="w-24 h-24 rounded-full bg-white shadow-lg flex items-center justify-center mb-6 border-4 border-gray-50 group-hover:border-apvs-green-500 transition-colors duration-300 relative">
+                <div className="w-24 h-24 rounded-full bg-white dark:bg-gray-800 shadow-lg flex items-center justify-center mb-6 border-4 border-gray-50 dark:border-gray-700 group-hover:border-apvs-green-500 transition-colors duration-300 relative">
                   <div className="absolute -top-2 -right-2 w-8 h-8 bg-apvs-blue-900 text-white rounded-full flex items-center justify-center font-bold text-sm shadow-md">
                     {index + 1}
                   </div>
                   <step.icon className="w-10 h-10 text-apvs-blue-900 group-hover:text-apvs-green-500 transition-colors duration-300" />
                 </div>
-                <h4 className="text-xl font-bold text-gray-900 mb-2">{step.title}</h4>
-                <p className="text-gray-600">{step.description}</p>
+                <h4 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">{step.title}</h4>
+                <p className="text-gray-600 dark:text-gray-300">{step.description}</p>
               </div>
             </Reveal>
           ))}

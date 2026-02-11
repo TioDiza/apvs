@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 
 export const TermsOfUsePage: React.FC = () => {
   return (
-    <div className="bg-white py-32">
+    <div className="bg-white dark:bg-gray-900 py-32">
       <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-4xl">
-        <div className="prose prose-lg max-w-none">
-          <h1 className="text-4xl font-extrabold text-apvs-blue-900">Termos de Uso</h1>
-          <p className="text-gray-500">Última atualização: {new Date().toLocaleDateString('pt-BR')}</p>
+        <div className="prose prose-lg max-w-none dark:prose-invert">
+          <h1 className="text-4xl font-extrabold text-apvs-blue-900 dark:text-white">Termos de Uso</h1>
+          <p className="text-gray-500 dark:text-gray-400">Última atualização: {new Date().toLocaleDateString('pt-BR')}</p>
           
           <h2>1. Aceitação dos Termos</h2>
           <p>Ao acessar e utilizar o site da APVS Brasil, você concorda em cumprir e estar vinculado a estes Termos de Uso. Se você não concorda com estes termos, por favor, não utilize nosso site.</p>

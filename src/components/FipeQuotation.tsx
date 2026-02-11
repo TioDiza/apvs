@@ -34,7 +34,7 @@ const VehicleTypeSelector: React.FC<{ selected: ApiVehicleType; onSelect: (type:
           key={id}
           onClick={() => onSelect(id)}
           className={`flex flex-col items-center justify-center w-24 h-24 p-4 rounded-xl border-2 transition-all duration-300 ${
-            selected === id ? 'bg-apvs-blue-900 border-apvs-green-500 text-white shadow-lg' : 'bg-gray-100 border-gray-200 text-gray-600 hover:border-apvs-blue-900 hover:bg-white'
+            selected === id ? 'bg-apvs-blue-900 border-apvs-green-500 text-white shadow-lg' : 'bg-gray-100 dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:border-apvs-blue-900 hover:bg-white dark:hover:bg-gray-700'
           }`}
         >
           <Icon className="w-8 h-8 mb-2" />
@@ -47,15 +47,15 @@ const VehicleTypeSelector: React.FC<{ selected: ApiVehicleType; onSelect: (type:
 
 const StyledSelect: React.FC<React.SelectHTMLAttributes<HTMLSelectElement> & { label: string }> = ({ label, children, ...props }) => (
   <div className="w-full mb-4">
-    <label className="block text-sm font-medium text-gray-500 mb-2 text-left">{label}</label>
+    <label className="block text-sm font-medium text-gray-500 dark:text-gray-400 mb-2 text-left">{label}</label>
     <div className="relative">
       <select
         {...props}
-        className="block w-full px-4 py-3 border-2 border-gray-200 rounded-xl text-lg text-gray-800 placeholder-gray-400 focus:ring-0 focus:border-apvs-blue-900 transition-colors bg-gray-50 appearance-none"
+        className="block w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-600 rounded-xl text-lg text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:ring-0 focus:border-apvs-blue-900 transition-colors bg-gray-50 dark:bg-gray-800 appearance-none"
       >
         {children}
       </select>
-      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-700">
+      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-700 dark:text-gray-300">
         <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
       </div>
     </div>
@@ -274,7 +274,7 @@ export const FipeQuotation: React.FC = () => {
 
   const renderStep = () => {
     if (isLoading && step !== 5) { // Don't show main loader on contact form step
-      return <div className="flex flex-col items-center justify-center h-64"><Loader2 className="w-12 h-12 animate-spin text-apvs-blue-900" /><p className="mt-4 text-lg font-semibold text-gray-600">Buscando informações...</p></div>;
+      return <div className="flex flex-col items-center justify-center h-64"><Loader2 className="w-12 h-12 animate-spin text-apvs-blue-900" /><p className="mt-4 text-lg font-semibold text-gray-600 dark:text-gray-300">Buscando informações...</p></div>;
     }
     if (error) {
       return <div className="flex flex-col items-center justify-center h-64 text-center"><AlertCircle className="w-12 h-12 text-red-500" /><p className="mt-4 text-lg font-semibold text-red-600">{error}</p><button onClick={reset} className="mt-4 bg-apvs-blue-900 text-white px-4 py-2 rounded-lg flex items-center gap-2"><RefreshCw className="w-4 h-4" /> Tentar Novamente</button></div>;
@@ -284,8 +284,8 @@ export const FipeQuotation: React.FC = () => {
       case 1:
         return (
           <>
-            <h4 className="text-3xl font-extrabold text-gray-900 mb-2">Faça sua cotação</h4>
-            <p className="text-gray-500 mb-6">Comece informando o tipo e o estado do seu veículo.</p>
+            <h4 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-2">Faça sua cotação</h4>
+            <p className="text-gray-500 dark:text-gray-400 mb-6">Comece informando o tipo e o estado do seu veículo.</p>
             <VehicleTypeSelector selected={apiVehicleType} onSelect={setApiVehicleType} />
             <StyledSelect label="Selecione seu estado" value={selectedState} onChange={(e) => setSelectedState(e.target.value)}>
               <option value="" disabled>-- Escolha um estado --</option>
@@ -304,17 +304,17 @@ export const FipeQuotation: React.FC = () => {
       case 1.5:
         return (
           <>
-            <h4 className="text-3xl font-extrabold text-gray-900 mb-6">Qual a categoria do seu carro?</h4>
+            <h4 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-6">Qual a categoria do seu carro?</h4>
             <div className="flex gap-4 mb-6">
-              <button onClick={() => { setCarCategory('light'); setStep(2); }} className="flex-1 p-4 border-2 rounded-lg font-semibold hover:border-apvs-green-500">Passeio Leve</button>
-              <button onClick={() => { setCarCategory('heavy'); setStep(2); }} className="flex-1 p-4 border-2 rounded-lg font-semibold hover:border-apvs-green-500">SUV / Pesado</button>
+              <button onClick={() => { setCarCategory('light'); setStep(2); }} className="flex-1 p-4 border-2 rounded-lg font-semibold hover:border-apvs-green-500 dark:border-gray-600 dark:hover:border-apvs-green-500">Passeio Leve</button>
+              <button onClick={() => { setCarCategory('heavy'); setStep(2); }} className="flex-1 p-4 border-2 rounded-lg font-semibold hover:border-apvs-green-500 dark:border-gray-600 dark:hover:border-apvs-green-500">SUV / Pesado</button>
             </div>
           </>
         );
       case 2:
         return (
           <>
-            <h4 className="text-3xl font-extrabold text-gray-900 mb-8">Selecione a Marca</h4>
+            <h4 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-8">Selecione a Marca</h4>
             <StyledSelect label="Marca" value={selectedBrand} onChange={(e) => setSelectedBrand(e.target.value)}>
               <option value="" disabled>-- Escolha uma marca --</option>
               {brands.map(brand => <option key={brand.code} value={brand.code}>{brand.name}</option>)}
@@ -324,7 +324,7 @@ export const FipeQuotation: React.FC = () => {
       case 3:
         return (
           <>
-            <h4 className="text-3xl font-extrabold text-gray-900 mb-8">Selecione o Modelo</h4>
+            <h4 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-8">Selecione o Modelo</h4>
             <StyledSelect label="Modelo" value={selectedModel} onChange={(e) => setSelectedModel(e.target.value)}>
               <option value="" disabled>-- Escolha um modelo --</option>
               {models.map(model => <option key={model.code} value={model.code}>{model.name}</option>)}
@@ -334,7 +334,7 @@ export const FipeQuotation: React.FC = () => {
       case 4:
         return (
           <>
-            <h4 className="text-3xl font-extrabold text-gray-900 mb-8">Selecione o Ano</h4>
+            <h4 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-8">Selecione o Ano</h4>
             <StyledSelect label="Ano" value={selectedYear} onChange={(e) => setSelectedYear(e.target.value)}>
               <option value="" disabled>-- Escolha o ano --</option>
               {years.map(year => <option key={year.code} value={year.code}>{year.name}</option>)}
@@ -344,10 +344,10 @@ export const FipeQuotation: React.FC = () => {
       case 5:
         return (
           <>
-            <h4 className="text-3xl font-extrabold text-gray-900 mb-2">Quase lá!</h4>
-            <p className="text-gray-500 mb-6">Preencha seus dados para ver o valor da sua proteção.</p>
+            <h4 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-2">Quase lá!</h4>
+            <p className="text-gray-500 dark:text-gray-400 mb-6">Preencha seus dados para ver o valor da sua proteção.</p>
             <form onSubmit={handleShowQuotation} className="w-full flex flex-col gap-4">
-              <input type="text" placeholder="Seu nome completo" value={name} onChange={e => setName(e.target.value)} required className="block w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-apvs-blue-900" />
+              <input type="text" placeholder="Seu nome completo" value={name} onChange={e => setName(e.target.value)} required className="block w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-600 rounded-xl focus:border-apvs-blue-900 bg-transparent" />
               <input 
                 type="tel" 
                 placeholder="Seu melhor telefone (WhatsApp)" 
@@ -355,9 +355,9 @@ export const FipeQuotation: React.FC = () => {
                 onChange={e => setPhone(formatPhone(e.target.value))} 
                 maxLength={15}
                 required 
-                className="block w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-apvs-blue-900" 
+                className="block w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-600 rounded-xl focus:border-apvs-blue-900 bg-transparent" 
               />
-              <p className="text-sm text-gray-500 mt-2">Veja a cotação agora após preencher os dados.</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">Veja a cotação agora após preencher os dados.</p>
               <button type="submit" disabled={!name || !phone || isLoading} className="w-full py-3 px-6 rounded-xl text-lg font-bold bg-apvs-green-500 hover:bg-apvs-green-600 text-white transition-all shadow-lg hover:-translate-y-1 disabled:bg-gray-400 disabled:cursor-not-allowed">
                 {isLoading ? <Loader2 className="w-6 h-6 animate-spin mx-auto" /> : 'Ver Cotação Agora'}
               </button>
@@ -367,29 +367,29 @@ export const FipeQuotation: React.FC = () => {
       case 6:
         return (
           <>
-            <h4 className="text-3xl font-extrabold text-gray-900 mb-2">Resultado da Cotação</h4>
-            <p className="text-gray-500 mb-6">Olá, {name.split(' ')[0]}! Confira os valores para seu veículo.</p>
-            <div className="text-left bg-apvs-blue-50 p-6 rounded-xl border border-apvs-blue-200 mb-6 w-full space-y-2">
+            <h4 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-2">Resultado da Cotação</h4>
+            <p className="text-gray-500 dark:text-gray-400 mb-6">Olá, {name.split(' ')[0]}! Confira os valores para seu veículo.</p>
+            <div className="text-left bg-apvs-blue-50 dark:bg-apvs-blue-900/50 p-6 rounded-xl border border-apvs-blue-200 dark:border-apvs-blue-800 mb-6 w-full space-y-2">
               <p><strong>Veículo:</strong> {vehicleInfo?.model}</p>
               <p><strong>Valor FIPE:</strong> <span className="font-bold">{vehicleInfo?.price}</span></p>
               {adhesionFee && (
                 <p><strong>Taxa de Adesão:</strong> <span className="font-bold">R$ {adhesionFee.toFixed(2).replace('.', ',')}</span></p>
               )}
-              <div className="pt-2 mt-2 border-t border-apvs-blue-200">
+              <div className="pt-2 mt-2 border-t border-apvs-blue-200 dark:border-apvs-blue-800">
                 {monthlyFee ? (
                   <p className="text-2xl font-bold text-apvs-green-600">
                     Mensalidade: R$ {monthlyFee.toFixed(2).replace('.', ',')}*
                   </p>
                 ) : (
-                  <p className="font-semibold text-apvs-blue-900">Valor sob consulta. Fale com um especialista.</p>
+                  <p className="font-semibold text-apvs-blue-900 dark:text-apvs-green-500">Valor sob consulta. Fale com um especialista.</p>
                 )}
-                <p className="text-xs text-gray-500 mt-1">*Valor de referência, sujeito a alterações.</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">*Valor de referência, sujeito a alterações.</p>
               </div>
             </div>
 
             <div className="text-left w-full space-y-3 mb-6">
-              <h5 className="font-bold text-lg text-gray-800 mb-3">Benefícios Inclusos:</h5>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 text-gray-700">
+              <h5 className="font-bold text-lg text-gray-800 dark:text-gray-200 mb-3">Benefícios Inclusos:</h5>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 text-gray-700 dark:text-gray-300">
                 {benefits.map((benefit, index) => (
                   <li key={index} className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-apvs-green-500 flex-shrink-0" />
@@ -397,7 +397,7 @@ export const FipeQuotation: React.FC = () => {
                   </li>
                 ))}
               </ul>
-              <p className="text-xs text-gray-500 mt-4 pt-2 border-t border-gray-200">
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-4 pt-2 border-t border-gray-200 dark:border-gray-700">
                 *Os benefícios podem ser alterados, conforme o plano contratado.
               </p>
             </div>
@@ -415,21 +415,21 @@ export const FipeQuotation: React.FC = () => {
   };
 
   return (
-    <section id="cotacao" className="py-20 bg-gray-50">
+    <section id="cotacao" className="py-20 bg-gray-50 dark:bg-black">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
-          <div className="w-full md:w-5/12 bg-apvs-blue-50 p-8 md:p-12 flex flex-col justify-center">
+        <div className="max-w-5xl mx-auto bg-white dark:bg-gray-900 rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
+          <div className="w-full md:w-5/12 bg-apvs-blue-50 dark:bg-gray-800/50 p-8 md:p-12 flex flex-col justify-center">
             <Reveal animation="slide-right">
               <div className="flex items-center gap-3 mb-6">
                 <Shield className="w-8 h-8 text-apvs-green-500" />
-                <h3 className="text-2xl font-bold text-apvs-blue-900">Cotação Online FIPE</h3>
+                <h3 className="text-2xl font-bold text-apvs-blue-900 dark:text-white">Cotação Online FIPE</h3>
               </div>
-              <p className="text-gray-600 mb-8 leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
                 Use nossa ferramenta para obter o valor de referência do seu veículo e uma estimativa da sua mensalidade de forma rápida e transparente.
               </p>
               <ul className="space-y-4">
                 {['Cotação baseada na Tabela FIPE', 'Processo 100% online', 'Rápido e sem compromisso', 'Dados seguros e protegidos'].map((item, idx) => (
-                  <li key={idx} className="flex items-center gap-3 text-gray-700 font-medium">
+                  <li key={idx} className="flex items-center gap-3 text-gray-700 dark:text-gray-200 font-medium">
                     <CheckCircle2 className="w-5 h-5 text-apvs-green-500 flex-shrink-0" />
                     {item}
                   </li>

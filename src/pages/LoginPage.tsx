@@ -34,7 +34,7 @@ export const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="bg-gradient-to-br from-apvs-blue-800 to-apvs-blue-900 min-h-screen flex items-center justify-center p-4 relative">
+    <div className="bg-gray-100 dark:bg-gray-900 min-h-screen flex items-center justify-center p-4 relative">
       <img src={logo} alt="APVS Brasil Logo" className="absolute top-8 left-8 w-48" />
       <div className="card">
         <input

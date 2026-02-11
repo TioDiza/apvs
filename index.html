@@ -7,7 +7,17 @@
     <meta name="description" content="Proteção Veicular Completa para o Seu Veículo. Segurança, economia e cobertura nacional." />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
+      // Immediately invoked function to set the theme on initial load
+      (function() {
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+
       tailwind.config = {
+        darkMode: 'class', // Enable dark mode
         theme: {
           extend: {
             colors: {
@@ -86,7 +96,7 @@
   }
 </style>
 </head>
-  <body class="font-sans antialiased text-gray-800">
+  <body class="font-sans antialiased text-gray-800 bg-white dark:bg-gray-900 dark:text-gray-200 transition-colors duration-300">
     <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
 </body>

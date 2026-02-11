@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import logo from '@/assets/logo-apvs-gold.png';
+import { useTheme } from '@/contexts/ThemeContext';
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const isHomePage = location.pathname === '/';
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,12 +62,21 @@ export const Navbar: React.FC = () => {
                 </li>
               ))}
             </ul>
-            <NavLink 
-              href="/#cotacao" 
-              className="relative overflow-hidden bg-apvs-green-500 hover:bg-apvs-green-600 text-white px-6 py-2.5 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg shine-effect"
-            >
-              Cotação Online
-            </NavLink>
+            <div className="flex items-center gap-4">
+              <NavLink 
+                href="/#cotacao" 
+                className="relative overflow-hidden bg-apvs-green-500 hover:bg-apvs-green-600 text-white px-6 py-2.5 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg shine-effect"
+              >
+                Cotação Online
+              </NavLink>
+              <button
+                onClick={toggleTheme}
+                className="p-2 rounded-full text-white bg-white/10 hover:bg-white/20 transition-colors"
+                aria-label="Toggle theme"
+              >
+                {theme === 'light' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
+              </button>
+            </div>
           </nav>
 
           {/* Mobile Menu Toggle */}
@@ -79,13 +90,13 @@ export const Navbar: React.FC = () => {
       </div>
 
       {/* Mobile Nav */}
-      <div className={`md:hidden absolute top-full left-0 right-0 bg-white shadow-xl transition-all duration-300 origin-top ${isMobileMenuOpen ? 'scale-y-100 opacity-100' : 'scale-y-0 opacity-0 h-0 overflow-hidden'}`}>
+      <div className={`md:hidden absolute top-full left-0 right-0 bg-white dark:bg-gray-800 shadow-xl transition-all duration-300 origin-top ${isMobileMenuOpen ? 'scale-y-100 opacity-100' : 'scale-y-0 opacity-0 h-0 overflow-hidden'}`}>
         <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
           {navLinks.map((link) => (
             <NavLink 
               key={link.name}
               href={link.href} 
-              className="text-gray-800 font-medium py-2 border-b border-gray-100"
+              className="text-gray-800 dark:text-gray-200 font-medium py-2 border-b border-gray-100 dark:border-gray-700"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {link.name}

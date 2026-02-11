@@ -23,10 +23,10 @@ export const WhatsAppButton: React.FC = () => {
       <WhatsAppIcon />
       
       {/* Tooltip */}
-      <span className="absolute right-full mr-4 bg-white text-gray-800 text-sm font-bold py-2 px-4 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
+      <span className="absolute right-full mr-4 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 text-sm font-bold py-2 px-4 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
         Fale com um consultor
         {/* Triangle pointer */}
-        <span className="absolute top-1/2 -mt-1.5 -right-3 border-solid border-6 border-transparent border-l-white"></span>
+        <span className="absolute top-1/2 -mt-1.5 -right-3 border-solid border-6 border-transparent border-l-white dark:border-l-gray-800"></span>
       </span>
       
       {/* Ripple effect */}

@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 
 export const PrivacyPolicyPage: React.FC = () => {
   return (
-    <div className="bg-white py-32">
+    <div className="bg-white dark:bg-gray-900 py-32">
       <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-4xl">
-        <div className="prose prose-lg max-w-none">
-          <h1 className="text-4xl font-extrabold text-apvs-blue-900">Política de Privacidade</h1>
-          <p className="text-gray-500">Última atualização: {new Date().toLocaleDateString('pt-BR')}</p>
+        <div className="prose prose-lg max-w-none dark:prose-invert">
+          <h1 className="text-4xl font-extrabold text-apvs-blue-900 dark:text-white">Política de Privacidade</h1>
+          <p className="text-gray-500 dark:text-gray-400">Última atualização: {new Date().toLocaleDateString('pt-BR')}</p>
 
           <h2>1. Coleta de Informações</h2>
           <p>Coletamos informações que você nos fornece diretamente, como quando solicita uma cotação (placa do veículo, nome, telefone). Também podemos coletar informações automaticamente através de cookies e tecnologias semelhantes para melhorar sua experiência no site.</p>
