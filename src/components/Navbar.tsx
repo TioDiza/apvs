@@ -102,13 +102,22 @@ export const Navbar: React.FC = () => {
               {link.name}
             </NavLink>
           ))}
-          <NavLink 
-            href="/#cotacao" 
-            className="bg-apvs-accent-500 text-white text-center px-6 py-3 rounded-md font-semibold mt-2"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            Fazer Cotação Agora
-          </NavLink>
+          <div className="flex items-center gap-4 mt-2">
+            <NavLink 
+              href="/#cotacao" 
+              className="flex-grow bg-apvs-accent-500 text-white text-center px-6 py-3 rounded-md font-semibold"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Fazer Cotação Agora
+            </NavLink>
+            <button
+              onClick={toggleTheme}
+              className="p-3 rounded-md text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700"
+              aria-label="Toggle theme"
+            >
+              {theme === 'light' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
+            </button>
+          </div>
         </div>
       </div>
     </header>
