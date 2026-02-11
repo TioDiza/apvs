@@ -277,6 +277,21 @@ export const FipeQuotation: React.FC = () => {
     setIsSubmitting(false);
   };
 
+  const handleChangeVehicleType = () => {
+    setStep(1);
+    setCarCategory(null);
+    setBrands([]);
+    setSelectedBrand('');
+    setModels([]);
+    setSelectedModel('');
+    setYears([]);
+    setSelectedYear('');
+    setVehicleInfo(null);
+    setMonthlyFee(null);
+    setAdhesionFee(null);
+    setError(null);
+  };
+
   const handleChangeBrand = () => {
     setSelectedBrand('');
     setModels([]);
@@ -332,11 +347,22 @@ export const FipeQuotation: React.FC = () => {
           </>
         );
       case 2:
+        const vehicleTypeLabels: { [key in ApiVehicleType]: string } = {
+          cars: 'Carro',
+          motorcycles: 'Moto',
+          trucks: 'Caminhão',
+        };
         return (
           <>
             <h4 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-6">Detalhes do Veículo</h4>
             {isLoading && <div className="flex items-center justify-center my-4"><Loader2 className="w-8 h-8 animate-spin text-apvs-blue-900" /></div>}
             
+            <SelectedInfo 
+              label="Tipo de Veículo" 
+              value={vehicleTypeLabels[apiVehicleType]} 
+              onChangeClick={handleChangeVehicleType} 
+            />
+
             {!selectedBrand ? (
               <SearchableSelect label="Marca" placeholder="Digite o nome da marca" options={brands} onSelect={setSelectedBrand} disabled={isLoading} />
             ) : (
