@@ -41,7 +41,18 @@ export const getBrands = async (vehicleType: string): Promise<Brand[]> => {
 export const getModels = async (vehicleType: string, brandId: string): Promise<Model[]> => {
   const response = await fetch(`${API_BASE_URL}/${vehicleType}/brands/${brandId}/models`);
   const data = await handleResponse(response);
-  return data; // A API aninha os modelos em um objeto, então retornamos a lista
+  
+  // Corrigindo: A API pode retornar um array diretamente ou um objeto com a lista aninhada.
+  // Esta verificação torna o código mais robusto.
+  if (Array.isArray(data)) {
+    return data;
+  }
+  if (data && Array.isArray(data.models)) {
+    return data.models;
+  }
+  
+  console.error("Estrutura de resposta inesperada para modelos:", data);
+  throw new Error("A resposta da API para modelos de veículos não está no formato esperado.");
 };
 
 export const getYears = async (vehicleType: string, brandId: string, modelId: string): Promise<Year[]> => {
