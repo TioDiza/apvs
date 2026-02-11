@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ShieldCheck, Facebook, Instagram, Youtube, MapPin, Phone, Mail } from 'lucide-react';
+import { Facebook, Instagram, MapPin, Phone, Mail } from 'lucide-react';
+import logo from '@/assets/logo-apvs-gold.png';
 
 export const Footer: React.FC = () => {
   return (
@@ -10,12 +11,7 @@ export const Footer: React.FC = () => {
           
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-6">
-              <ShieldCheck className="w-8 h-8 text-apvs-green-500" />
-              <span className="text-2xl font-bold text-white">
-                APVS <span className="text-apvs-green-500">Brasil</span>
-              </span>
-            </div>
+            <img src={logo} alt="APVS Brasil" className="h-12 mb-6" />
             <p className="text-sm text-gray-400 mb-6 leading-relaxed">
               A maior associação de proteção veicular da América Latina. Protegendo o seu patrimônio com seriedade e transparência há mais de 14 anos.
             </p>
