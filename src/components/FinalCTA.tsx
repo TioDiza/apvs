@@ -6,7 +6,7 @@ export const FinalCTA: React.FC = () => {
   return (
     <section className="relative py-24 bg-apvs-blue-900 overflow-hidden">
       {/* Gradient Overlay */}
-      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-white dark:from-gray-900 to-transparent pointer-events-none"></div>
+      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-white dark:from-black to-transparent pointer-events-none"></div>
 
       {/* Background patterns */}
       <div className="absolute inset-0 opacity-10">
